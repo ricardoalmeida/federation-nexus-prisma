@@ -4,7 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf dist",
+    "build": "yarn -s clean && yarn -s generate && tsc",
+    "dev": "env-cmd ts-node-dev --transpile-only ./src/index.ts",
+    "dev:typecheck": "tsc --noEmit --watch",
+    "postgres:start": "docker-compose up -d",
+    "db:migrate:save": "yarn prisma migrate save --experimental",
+    "db:migrate:up": "yarn prisma migrate up --experimental",
+    "generate": "ts-node --transpile-only -P tsconfig.json src/schema.ts"
   },
   "keywords": [],
   "author": "",
