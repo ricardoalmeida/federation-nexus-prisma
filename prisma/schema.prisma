@@ -14,16 +14,14 @@ model Playlist {
 }
 
 model PlaylistTrack {
-  id         Int       @id @default(autoincrement())
+  id         Int      @id @default(autoincrement())
   addedAt    DateTime
-  playlist   Playlist? @relation(fields: [playlistId], references: [id])
-  playlistId Int?
-  track      Track?    @relation(fields: [trackId], references: [id])
-  trackId    Int?
+  playlistId Int
+  playlist   Playlist @relation(fields: [playlistId], references: [id])
+  trackId    Int
 }
 
 model Track {
-  id        Int             @id @default(autoincrement())
-  name      String
-  playlists PlaylistTrack[]
+  id   Int    @id @default(autoincrement())
+  name String
 }

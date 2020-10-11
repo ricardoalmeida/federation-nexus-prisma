@@ -1,9 +1,44 @@
-import { makeSchema } from "@nexus/schema";
+import { makeSchema, mutationType, objectType, queryType } from "@nexus/schema";
 import { nexusPrisma } from "nexus-plugin-prisma";
 import path from "path";
 
+export const Playlist = objectType({
+  name: "Playlist",
+  definition(t) {
+    t.model.id();
+    t.model.description();
+    t.model.tracks({ type: "Track" });
+  },
+});
+
+export const Track = objectType({
+  name: "Track",
+  definition(t) {
+    t.model.id();
+    t.model.name();
+  },
+});
+
+const Query = queryType({
+  definition(t) {
+    t.crud.playlist();
+    t.crud.playlists({ pagination: true, filtering: true });
+  },
+});
+
+const Mutation = mutationType({
+  definition(t) {
+    t.crud.createOnePlaylist();
+    t.crud.updateOnePlaylist();
+    t.crud.deleteOnePlaylist();
+    t.crud.createOneTrack();
+    t.crud.updateOneTrack();
+    t.crud.deleteOneTrack();
+  },
+});
+
 export const schema = makeSchema({
-  types: [],
+  types: [Query, Mutation, Playlist, Track],
   plugins: [nexusPrisma({ experimentalCRUD: true })],
   outputs: {
     schema: path.join(process.cwd(), "schema.graphql"),
