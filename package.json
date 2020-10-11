@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "yarn -s clean && yarn -s generate && tsc",
-    "dev": "env-cmd ts-node-dev --transpile-only ./src/index.ts",
+    "dev": "ts-node-dev --transpile-only ./src/index.ts",
     "dev:typecheck": "tsc --noEmit --watch",
     "postgres:start": "docker-compose up -d",
     "db:migrate:save": "yarn prisma migrate save --experimental",
