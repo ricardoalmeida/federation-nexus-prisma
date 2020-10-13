@@ -8,32 +8,42 @@ afterAll(async () => {
     await prisma.$disconnect();
 });
 
-const CREATE_PLAYLIST = gql`
-    mutation createPlaylist($data: PlaylistCreateInput!) {
-        createOnePlaylist(data: $data) {
+const PLAYLIST = gql`
+    query playlist($where: PlaylistWhereUniqueInput!) {
+        playlist(where: $where) {
             id
+            description
         }
     }
 `;
 
-describe('createOnePlaylist', () => {
-    test('creates one playlist', async () => {
+beforeAll(async () => {
+    await prisma.playlist.create({
+        data: {
+            description: 'Playlist description',
+        },
+    });
+});
+
+describe('playlist', () => {
+    test('returns a playlist', async () => {
         const { server } = constructTestServer({
             context: () => ({ prisma }),
         });
-        const { mutate } = createTestClient(server);
-        const res = await mutate({
-            mutation: CREATE_PLAYLIST,
+        const { query } = createTestClient(server);
+        const res = await query({
+            query: PLAYLIST,
             variables: {
-                data: {
-                    description: 'My playlist',
+                where: {
+                    id: 1,
                 },
             },
         });
         expect(res).toMatchInlineSnapshot(`
             Object {
               "data": Object {
-                "createOnePlaylist": Object {
+                "playlist": Object {
+                  "description": "Playlist description",
                   "id": 1,
                 },
               },
