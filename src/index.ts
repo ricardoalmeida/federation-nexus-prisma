@@ -1,10 +1,28 @@
 import { ApolloServer } from 'apollo-server-express';
 import express from 'express';
 import { createContext } from './context';
-import { schema } from './schema';
+import federatedSchema from './schema';
+import { isProd } from './utils/constants';
 
 const server = new ApolloServer({
-  schema,
+  schema: federatedSchema,
+  formatError: (err) => {
+    const errorReport = {
+      message: err.message,
+      locations: err.locations,
+      path: err.path,
+      stacktrace: err.extensions?.exception?.stacktrace || [],
+      code: err.extensions?.code,
+    };
+    console.error('GraphQL Error', errorReport);
+    if (errorReport.code == 'INTERNAL_SERVER_ERROR' && isProd()) {
+      return {
+        message: 'Oops! Something went wrong! :(',
+        code: errorReport.code,
+      };
+    }
+    return errorReport;
+  },
   context: createContext,
   tracing: true,
 });

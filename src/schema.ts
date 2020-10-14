@@ -1,4 +1,5 @@
 import { makeSchema, mutationType, objectType, queryType } from '@nexus/schema';
+import { transformSchemaFederation } from 'graphql-transform-federation';
 import { nexusPrisma } from 'nexus-plugin-prisma';
 import path from 'path';
 
@@ -37,7 +38,7 @@ const Mutation = mutationType({
   },
 });
 
-export const schema = makeSchema({
+const schema = makeSchema({
   types: [Query, Mutation, Playlist, Track],
   plugins: [nexusPrisma({ experimentalCRUD: true })],
   outputs: {
@@ -58,3 +59,11 @@ export const schema = makeSchema({
     ],
   },
 });
+
+const federatedSchema = transformSchemaFederation(schema, {
+  Query: {
+    extend: true,
+  },
+});
+
+export default federatedSchema;
