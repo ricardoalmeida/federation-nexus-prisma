@@ -1,10 +1,10 @@
 import { ApolloServer } from 'apollo-server-express';
 import express from 'express';
 import { createContext } from './context';
-import { schema } from './schema';
+import federatedSchema from './schema';
 
 const server = new ApolloServer({
-  schema,
+  schema: federatedSchema,
   context: createContext,
   tracing: true,
 });
