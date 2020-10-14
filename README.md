@@ -36,3 +36,7 @@ The server is available in <http://localhost:4000/graphql>
 ```bash
 yarn test
 ```
+
+## Authentication && Authorization
+
+I assume the authentication will be in Apollo Gateway and the request to services have userId and scopes already set.

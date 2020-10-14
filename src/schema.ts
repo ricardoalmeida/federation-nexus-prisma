@@ -1,7 +1,9 @@
 import { makeSchema, mutationType, objectType, queryType } from '@nexus/schema';
+import { applyMiddleware } from 'graphql-middleware';
 import { transformSchemaFederation } from 'graphql-transform-federation';
 import { nexusPrisma } from 'nexus-plugin-prisma';
 import path from 'path';
+import { permissions } from './utils/permissions';
 
 export const Playlist = objectType({
   name: 'Playlist',
@@ -60,10 +62,13 @@ const schema = makeSchema({
   },
 });
 
-const federatedSchema = transformSchemaFederation(schema, {
-  Query: {
-    extend: true,
-  },
-});
+const federatedSchema = applyMiddleware(
+  transformSchemaFederation(schema, {
+    Query: {
+      extend: true,
+    },
+  }),
+  permissions,
+);
 
 export default federatedSchema;
