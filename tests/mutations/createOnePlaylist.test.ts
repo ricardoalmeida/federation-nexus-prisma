@@ -9,9 +9,39 @@ afterAll(async () => {
 });
 
 describe('createOnePlaylist', () => {
+  test('not logged user', async () => {
+    const { server } = constructTestServer({
+      context: () => ({ prisma, userId: 0, scopes: new Set<string>(['gateway']) }),
+    });
+
+    const { mutate } = createTestClient(server);
+    const res = await mutate({
+      mutation: createPlaylist,
+      variables: {
+        data: {
+          description: 'My playlist',
+        },
+      },
+    });
+    expect(res).toMatchInlineSnapshot(`
+      Object {
+        "data": null,
+        "errors": Array [
+          [GraphQLError: you must be logged in],
+        ],
+        "extensions": undefined,
+        "http": Object {
+          "headers": Headers {
+            Symbol(map): Object {},
+          },
+        },
+      }
+    `);
+  });
+
   test('creates one playlist', async () => {
     const { server } = constructTestServer({
-      context: () => ({ prisma }),
+      context: () => ({ prisma, userId: 1, scopes: new Set<string>(['gateway']) }),
     });
     const { mutate } = createTestClient(server);
     const res = await mutate({
