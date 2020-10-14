@@ -3,7 +3,7 @@ import { constructTestServer } from '../__utils';
 import { createContext } from '../../src/context';
 import { createPlaylist } from '../graphql';
 
-const { prisma } = createContext();
+const { prisma } = createContext({});
 afterAll(async () => {
   await prisma.$disconnect();
 });

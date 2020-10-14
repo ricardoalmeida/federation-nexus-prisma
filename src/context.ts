@@ -9,7 +9,7 @@ export interface Context {
 }
 
 export const createContext = ({ request }: any): Context => {
-  const userId = request?.headers['user-id'];
+  const userId = Number(request?.headers['user-id']);
   const scopes = new Set<string>(request?.headers.scopes);
 
   return { prisma, userId, scopes };
