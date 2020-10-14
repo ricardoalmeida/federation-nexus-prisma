@@ -1,18 +1,18 @@
-import { makeSchema, mutationType, objectType, queryType } from "@nexus/schema";
-import { nexusPrisma } from "nexus-plugin-prisma";
-import path from "path";
+import { makeSchema, mutationType, objectType, queryType } from '@nexus/schema';
+import { nexusPrisma } from 'nexus-plugin-prisma';
+import path from 'path';
 
 export const Playlist = objectType({
-  name: "Playlist",
+  name: 'Playlist',
   definition(t) {
     t.model.id();
     t.model.description();
-    t.model.tracks({ type: "Track" });
+    t.model.tracks({ type: 'Track' });
   },
 });
 
 export const Track = objectType({
-  name: "Track",
+  name: 'Track',
   definition(t) {
     t.model.id();
     t.model.name();
@@ -41,22 +41,19 @@ export const schema = makeSchema({
   types: [Query, Mutation, Playlist, Track],
   plugins: [nexusPrisma({ experimentalCRUD: true })],
   outputs: {
-    schema: path.join(process.cwd(), "schema.graphql"),
-    typegen: path.join(
-      __dirname,
-      "../../node_modules/@types/nexus-typegen/index.d.ts"
-    ),
+    schema: path.join(process.cwd(), 'schema.graphql'),
+    typegen: path.join(__dirname, '../../node_modules/@types/nexus-typegen/index.d.ts'),
   },
   typegenAutoConfig: {
-    contextType: "Context.Context",
+    contextType: 'Context.Context',
     sources: [
       {
-        source: ".prisma/client",
-        alias: "prisma",
+        source: '.prisma/client',
+        alias: 'prisma',
       },
       {
-        source: require.resolve("./context"),
-        alias: "Context",
+        source: require.resolve('./context'),
+        alias: 'Context',
       },
     ],
   },
