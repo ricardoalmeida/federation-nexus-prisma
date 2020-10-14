@@ -43,8 +43,8 @@ describe('playlist', () => {
       Object {
         "data": Object {
           "playlist": Object {
-              "description": "Playlist description",
-              "id": 1,
+            "description": "Playlist description",
+            "id": 1,
           },
         },
         "errors": undefined,

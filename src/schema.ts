@@ -41,7 +41,7 @@ export const schema = makeSchema({
   types: [Query, Mutation, Playlist, Track],
   plugins: [nexusPrisma({ experimentalCRUD: true })],
   outputs: {
-    schema: path.join(process.cwd(), 'schema.graphql'),
+    schema: path.join(process.cwd(), './generated/schema.graphql'),
     typegen: path.join(__dirname, '../../node_modules/@types/nexus-typegen/index.d.ts'),
   },
   typegenAutoConfig: {
