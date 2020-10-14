@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "yarn -s clean && yarn -s generate && tsc",
-    "dev": "ts-node-dev --transpile-only ./src/index.ts",
+    "dev": "env-cmd ts-node-dev --transpile-only ./src/index.ts",
     "dev:typecheck": "tsc --noEmit --watch",
     "postgres:start": "docker-compose up -d",
     "db:migrate:save": "yarn prisma migrate save --experimental",
@@ -42,6 +42,7 @@
     "@types/jest": "^26.0.14",
     "@types/node": "^14.11.8",
     "apollo-server-testing": "^2.18.2",
+    "env-cmd": "^10.1.0",
     "jest": "^26.5.3",
     "prettier": "^2.1.2",
     "randomstring": "^1.1.5",
