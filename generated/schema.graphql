@@ -19,6 +19,10 @@ input DateTimeFilter {
   notIn: [DateTime!]
 }
 
+input IntFieldUpdateOperationsInput {
+  set: Int
+}
+
 input IntFilter {
   equals: Int
   gt: Int
@@ -27,17 +31,6 @@ input IntFilter {
   lt: Int
   lte: Int
   not: NestedIntFilter
-  notIn: [Int!]
-}
-
-input IntNullableFilter {
-  equals: Int
-  gt: Int
-  gte: Int
-  in: [Int!]
-  lt: Int
-  lte: Int
-  not: NestedIntNullableFilter
   notIn: [Int!]
 }
 
@@ -72,17 +65,6 @@ input NestedIntFilter {
   notIn: [Int!]
 }
 
-input NestedIntNullableFilter {
-  equals: Int
-  gt: Int
-  gte: Int
-  in: [Int!]
-  lt: Int
-  lte: Int
-  not: NestedIntNullableFilter
-  notIn: [Int!]
-}
-
 input NestedStringFilter {
   contains: String
   endsWith: String
@@ -108,33 +90,14 @@ input PlaylistCreateInput {
   tracks: PlaylistTrackCreateManyWithoutPlaylistInput
 }
 
-input PlaylistCreateOneWithoutTracksInput {
-  connect: PlaylistWhereUniqueInput
-  create: PlaylistCreateWithoutTracksInput
-}
-
-input PlaylistCreateWithoutTracksInput {
-  description: String!
-}
-
 input PlaylistTrackCreateManyWithoutPlaylistInput {
   connect: [PlaylistTrackWhereUniqueInput!]
   create: [PlaylistTrackCreateWithoutPlaylistInput!]
 }
 
-input PlaylistTrackCreateManyWithoutTrackInput {
-  connect: [PlaylistTrackWhereUniqueInput!]
-  create: [PlaylistTrackCreateWithoutTrackInput!]
-}
-
 input PlaylistTrackCreateWithoutPlaylistInput {
   addedAt: DateTime!
-  track: TrackCreateOneWithoutPlaylistsInput
-}
-
-input PlaylistTrackCreateWithoutTrackInput {
-  addedAt: DateTime!
-  playlist: PlaylistCreateOneWithoutTracksInput
+  trackId: Int!
 }
 
 input PlaylistTrackListRelationFilter {
@@ -149,12 +112,13 @@ input PlaylistTrackScalarWhereInput {
   id: IntFilter
   NOT: [PlaylistTrackScalarWhereInput!]
   OR: [PlaylistTrackScalarWhereInput!]
-  playlistId: IntNullableFilter
-  trackId: IntNullableFilter
+  playlistId: IntFilter
+  trackId: IntFilter
 }
 
 input PlaylistTrackUpdateManyDataInput {
   addedAt: DateTimeFieldUpdateOperationsInput
+  trackId: IntFieldUpdateOperationsInput
 }
 
 input PlaylistTrackUpdateManyWithoutPlaylistInput {
@@ -169,18 +133,6 @@ input PlaylistTrackUpdateManyWithoutPlaylistInput {
   upsert: [PlaylistTrackUpsertWithWhereUniqueWithoutPlaylistInput!]
 }
 
-input PlaylistTrackUpdateManyWithoutTrackInput {
-  connect: [PlaylistTrackWhereUniqueInput!]
-  create: [PlaylistTrackCreateWithoutTrackInput!]
-  delete: [PlaylistTrackWhereUniqueInput!]
-  deleteMany: [PlaylistTrackScalarWhereInput!]
-  disconnect: [PlaylistTrackWhereUniqueInput!]
-  set: [PlaylistTrackWhereUniqueInput!]
-  update: [PlaylistTrackUpdateWithWhereUniqueWithoutTrackInput!]
-  updateMany: [PlaylistTrackUpdateManyWithWhereNestedInput!]
-  upsert: [PlaylistTrackUpsertWithWhereUniqueWithoutTrackInput!]
-}
-
 input PlaylistTrackUpdateManyWithWhereNestedInput {
   data: PlaylistTrackUpdateManyDataInput!
   where: PlaylistTrackScalarWhereInput!
@@ -188,12 +140,7 @@ input PlaylistTrackUpdateManyWithWhereNestedInput {
 
 input PlaylistTrackUpdateWithoutPlaylistDataInput {
   addedAt: DateTimeFieldUpdateOperationsInput
-  track: TrackUpdateOneWithoutPlaylistsInput
-}
-
-input PlaylistTrackUpdateWithoutTrackDataInput {
-  addedAt: DateTimeFieldUpdateOperationsInput
-  playlist: PlaylistUpdateOneWithoutTracksInput
+  trackId: IntFieldUpdateOperationsInput
 }
 
 input PlaylistTrackUpdateWithWhereUniqueWithoutPlaylistInput {
@@ -201,20 +148,9 @@ input PlaylistTrackUpdateWithWhereUniqueWithoutPlaylistInput {
   where: PlaylistTrackWhereUniqueInput!
 }
 
-input PlaylistTrackUpdateWithWhereUniqueWithoutTrackInput {
-  data: PlaylistTrackUpdateWithoutTrackDataInput!
-  where: PlaylistTrackWhereUniqueInput!
-}
-
 input PlaylistTrackUpsertWithWhereUniqueWithoutPlaylistInput {
   create: PlaylistTrackCreateWithoutPlaylistInput!
   update: PlaylistTrackUpdateWithoutPlaylistDataInput!
-  where: PlaylistTrackWhereUniqueInput!
-}
-
-input PlaylistTrackUpsertWithWhereUniqueWithoutTrackInput {
-  create: PlaylistTrackCreateWithoutTrackInput!
-  update: PlaylistTrackUpdateWithoutTrackDataInput!
   where: PlaylistTrackWhereUniqueInput!
 }
 
@@ -225,9 +161,8 @@ input PlaylistTrackWhereInput {
   NOT: [PlaylistTrackWhereInput!]
   OR: [PlaylistTrackWhereInput!]
   playlist: PlaylistWhereInput
-  playlistId: IntNullableFilter
-  track: TrackWhereInput
-  trackId: IntNullableFilter
+  playlistId: IntFilter
+  trackId: IntFilter
 }
 
 input PlaylistTrackWhereUniqueInput {
@@ -237,24 +172,6 @@ input PlaylistTrackWhereUniqueInput {
 input PlaylistUpdateInput {
   description: StringFieldUpdateOperationsInput
   tracks: PlaylistTrackUpdateManyWithoutPlaylistInput
-}
-
-input PlaylistUpdateOneWithoutTracksInput {
-  connect: PlaylistWhereUniqueInput
-  create: PlaylistCreateWithoutTracksInput
-  delete: Boolean
-  disconnect: Boolean
-  update: PlaylistUpdateWithoutTracksDataInput
-  upsert: PlaylistUpsertWithoutTracksInput
-}
-
-input PlaylistUpdateWithoutTracksDataInput {
-  description: StringFieldUpdateOperationsInput
-}
-
-input PlaylistUpsertWithoutTracksInput {
-  create: PlaylistCreateWithoutTracksInput!
-  update: PlaylistUpdateWithoutTracksDataInput!
 }
 
 input PlaylistWhereInput {
@@ -306,48 +223,10 @@ type Track {
 
 input TrackCreateInput {
   name: String!
-  playlists: PlaylistTrackCreateManyWithoutTrackInput
-}
-
-input TrackCreateOneWithoutPlaylistsInput {
-  connect: TrackWhereUniqueInput
-  create: TrackCreateWithoutPlaylistsInput
-}
-
-input TrackCreateWithoutPlaylistsInput {
-  name: String!
 }
 
 input TrackUpdateInput {
   name: StringFieldUpdateOperationsInput
-  playlists: PlaylistTrackUpdateManyWithoutTrackInput
-}
-
-input TrackUpdateOneWithoutPlaylistsInput {
-  connect: TrackWhereUniqueInput
-  create: TrackCreateWithoutPlaylistsInput
-  delete: Boolean
-  disconnect: Boolean
-  update: TrackUpdateWithoutPlaylistsDataInput
-  upsert: TrackUpsertWithoutPlaylistsInput
-}
-
-input TrackUpdateWithoutPlaylistsDataInput {
-  name: StringFieldUpdateOperationsInput
-}
-
-input TrackUpsertWithoutPlaylistsInput {
-  create: TrackCreateWithoutPlaylistsInput!
-  update: TrackUpdateWithoutPlaylistsDataInput!
-}
-
-input TrackWhereInput {
-  AND: [TrackWhereInput!]
-  id: IntFilter
-  name: StringFilter
-  NOT: [TrackWhereInput!]
-  OR: [TrackWhereInput!]
-  playlists: PlaylistTrackListRelationFilter
 }
 
 input TrackWhereUniqueInput {
