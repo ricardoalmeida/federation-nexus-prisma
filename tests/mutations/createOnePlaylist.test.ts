@@ -3,7 +3,9 @@ import { constructTestServer } from '../__utils';
 import { createContext } from '../../src/context';
 import { createPlaylist } from '../graphql';
 
-const { prisma, userId, scopes } = createContext({ req: { headers: { 'user-uuid': '123456' } } });
+const { prisma, userId, permissions } = createContext({
+  req: { headers: { 'user-uuid': '123456' } },
+});
 
 afterAll(async () => {
   await prisma.$disconnect();
@@ -12,7 +14,7 @@ afterAll(async () => {
 describe('createOnePlaylist', () => {
   test('not logged user', async () => {
     const { server } = constructTestServer({
-      context: () => ({ prisma, userId: 0, scopes }),
+      context: () => ({ prisma, userId: 0, permissions }),
     });
 
     const { mutate } = createTestClient(server);
@@ -42,7 +44,7 @@ describe('createOnePlaylist', () => {
 
   test('creates one playlist', async () => {
     const { server } = constructTestServer({
-      context: () => ({ prisma, userId, scopes }),
+      context: () => ({ prisma, userId, permissions }),
     });
     const { mutate } = createTestClient(server);
     const res = await mutate({

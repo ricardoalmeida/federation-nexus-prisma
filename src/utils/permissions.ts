@@ -3,7 +3,9 @@ import { or, rule, shield } from 'graphql-shield';
 
 const isAuthenticated = rule({ cache: 'contextual' })(async (parent, args, ctx) => ctx.userId > 0);
 
-const isAdmin = rule({ cache: 'contextual' })(async (parent, args, ctx) => ctx.scopes.has('admin'));
+const isAdmin = rule({ cache: 'contextual' })(async (parent, args, ctx) =>
+  ctx.permissions.has('admin'),
+);
 
 export const permissions = shield(
   {
