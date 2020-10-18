@@ -61,4 +61,4 @@ query playlist {
       "message": "you must be logged in",
 ```
 
-This is because the GraphQL playground is available via [Apollo Gateway](https://github.com/ricardoalmeida/apollo-gateway) project. Please check this repository for instructions how to get it running.
+This is because the GraphQL playground is available via [Apollo Gateway](https://github.com/ricardoalmeida/apollo-gateway) project. Please pull this repository and follow instructions how to get it running.
