@@ -1,0 +1,33 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "DeleteField",
+      "model": "PlaylistTrack",
+      "field": "track"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "PlaylistTrack",
+      "field": "playlist",
+      "arity": "Required"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "PlaylistTrack",
+      "field": "playlistId",
+      "arity": "Required"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "PlaylistTrack",
+      "field": "trackId",
+      "arity": "Required"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Track",
+      "field": "playlists"
+    }
+  ]
+}
