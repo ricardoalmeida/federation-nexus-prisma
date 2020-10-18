@@ -8,7 +8,7 @@ export interface Context {
   scopes: Set<string>;
 }
 
-export const createContext = ({ request }: any): Context => {
+export const createContext = ({ req: request }: { req: any }): Context => {
   const userId = Number(request?.headers['user-id']);
   const scopes = new Set<string>(request?.headers.scopes);
 
