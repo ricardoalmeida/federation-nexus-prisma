@@ -4,13 +4,13 @@ const prisma = new PrismaClient({ log: ['query'] });
 
 export interface Context {
   prisma: PrismaClient;
-  userId: number;
-  scopes: Set<string>;
+  userId: string;
+  permissions: Set<string>;
 }
 
-export const createContext = ({ request }: any): Context => {
-  const userId = Number(request?.headers['user-id']);
-  const scopes = new Set<string>(request?.headers.scopes);
+export const createContext = ({ req: request }: { req: any }): Context => {
+  const userId = request?.headers['user-id'];
+  const permissions = new Set<string>(request?.headers.permissions);
 
-  return { prisma, userId, scopes };
+  return { prisma, userId, permissions };
 };
