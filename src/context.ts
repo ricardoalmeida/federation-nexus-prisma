@@ -6,14 +6,8 @@ export interface Context {
   permissions: Set<string>;
 }
 
-export const createContext = ({
-  req: request,
-  prisma,
-}: {
-  req: any;
-  prisma?: PrismaClient;
-}): Context => {
-  const prismaClient = prisma || new PrismaClient({ log: ['query'] });
+const prismaClient = new PrismaClient({ log: ['query'] });
+export const createContext = ({ req: request }: { req: any }): Context => {
   const userId = request?.headers['user-uuid'];
   const permissions = new Set<string>(request?.headers.permissions);
 
