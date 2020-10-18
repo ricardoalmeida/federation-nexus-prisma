@@ -4,7 +4,7 @@ import { createContext } from '../../src/context';
 import { createPlaylist } from '../graphql';
 
 const { prisma, userId, permissions } = createContext({
-  req: { headers: { 'user-uuid': '123456' } },
+  req: { headers: { 'user-id': '123456' } },
 });
 
 afterAll(async () => {

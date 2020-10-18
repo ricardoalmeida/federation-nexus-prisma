@@ -29,7 +29,26 @@ cp .env.template .env
 yarn dev
 ```
 
-The server is available in <http://localhost:4000/graphql>
+The server is available in <http://localhost:4001/graphql>. However if you try to use queries and mutations you will get the error:
+
+```json
+query playlist {
+  playlist(where: { id: 1}) {
+    id
+    tracks {
+      id
+    }
+  }
+}
+
+# ==> Run
+{
+  "errors": [
+    {
+      "message": "you must be logged in",
+```
+
+This is because the GraphQL playground is available via [Apollo Gateway](https://github.com/ricardoalmeida/federation-nexus-prisma) project. Please check this repository for instructions how to get it running.
 
 ### Integration tests
 
