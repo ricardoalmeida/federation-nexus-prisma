@@ -3,7 +3,7 @@ import { constructTestServer } from '../__utils';
 import { createContext } from '../../src/context';
 import gql from 'graphql-tag';
 
-const { prisma } = createContext({});
+const { prisma, userId, scopes } = createContext({ req: { headers: { 'user-uuid': '123456' } } });
 afterAll(async () => {
   await prisma.$disconnect();
 });
@@ -28,7 +28,7 @@ beforeAll(async () => {
 describe('playlist', () => {
   test('not logged user', async () => {
     const { server } = constructTestServer({
-      context: () => ({ prisma, userId: 0, scopes: new Set<string>(['gateway']) }),
+      context: () => ({ prisma, userId: 0, scopes }),
     });
 
     const { query } = createTestClient(server);
@@ -60,7 +60,7 @@ describe('playlist', () => {
 
   test('returns a playlist', async () => {
     const { server } = constructTestServer({
-      context: () => ({ prisma, userId: 1, scopes: new Set<string>(['gateway']) }),
+      context: () => ({ prisma, userId, scopes }),
     });
     const { query } = createTestClient(server);
     const res = await query({
