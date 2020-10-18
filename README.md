@@ -29,9 +29,22 @@ cp .env.template .env
 yarn dev
 ```
 
-The server is available in <http://localhost:4001/graphql>. However if you try to use queries and mutations you will get the error:
+The server is available in <http://localhost:4001/graphql>.
 
-```json
+### Integration tests
+
+Tests are running in Jest, validating from GraphQL endpoint to operations in Postgres. So make sure you have the db up and running.
+
+```bash
+yarn postgres:start
+yarn test
+```
+
+## Authentication & Authorization
+
+If you try to use queries and mutations you will get the error:
+
+```graphql
 query playlist {
   playlist(where: { id: 1}) {
     id
@@ -48,14 +61,4 @@ query playlist {
       "message": "you must be logged in",
 ```
 
-This is because the GraphQL playground is available via [Apollo Gateway](https://github.com/ricardoalmeida/federation-nexus-prisma) project. Please check this repository for instructions how to get it running.
-
-### Integration tests
-
-```bash
-yarn test
-```
-
-## Authentication && Authorization
-
-I assume the authentication will be in Apollo Gateway and the request to services have userId and permissions already set.
+This is because the GraphQL playground is available via [Apollo Gateway](https://github.com/ricardoalmeida/apollo-gateway) project. Please check this repository for instructions how to get it running.
