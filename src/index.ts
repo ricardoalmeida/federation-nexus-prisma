@@ -1,6 +1,6 @@
 import { ApolloServer } from 'apollo-server-express';
 import express from 'express';
-import { createContext } from './context';
+import { createContext, prisma } from './context';
 import federatedSchema from './schema';
 import { isProd } from './utils/constants';
 
@@ -36,4 +36,10 @@ async function run() {
   });
 }
 
-run();
+run()
+  .catch((e) => {
+    throw e;
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  });
