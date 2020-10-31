@@ -10,7 +10,6 @@ export const Playlist = objectType({
   definition(t) {
     t.model.id();
     t.model.description();
-    t.model.tracks({ type: 'Track' });
   },
 });
 
