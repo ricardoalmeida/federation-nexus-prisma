@@ -32,7 +32,7 @@ const server = new ApolloServer({
   },
 });
 
-const port = 4000;
+const port = process.env.SERVER_PORT || 4000;
 async function run() {
   const app = express();
   server.applyMiddleware({ app });

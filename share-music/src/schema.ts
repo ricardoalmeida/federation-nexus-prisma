@@ -45,7 +45,7 @@ const schema = makeSchema({
   plugins: [nexusPrisma({ experimentalCRUD: true })],
   outputs: {
     schema: path.join(process.cwd(), './generated/schema.graphql'),
-    typegen: path.join(__dirname, '../../node_modules/@types/nexus-typegen/index.d.ts'),
+    typegen: path.join(__dirname, '../../share-music/node_modules/@types/nexus-typegen/index.d.ts'),
   },
   typegenAutoConfig: {
     contextType: 'Context.Context',
