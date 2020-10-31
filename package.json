@@ -7,6 +7,7 @@
     "clean": "rm -rf dist",
     "build": "yarn -s clean && yarn -s generate && tsc",
     "dev": "env-cmd ts-node-dev --transpile-only ./src/index.ts",
+    "gateway": "env-cmd ts-node-dev --transpile-only ./src/gateway.ts",
     "dev:typecheck": "tsc --noEmit --watch",
     "postgres:start": "docker-compose up -d",
     "db:migrate:save": "yarn prisma migrate save --experimental",
@@ -30,6 +31,7 @@
   "license": "ISC",
   "dependencies": {
     "@apollo/federation": "^0.20.4",
+    "@apollo/gateway": "^0.21.0",
     "@nexus/schema": "^0.17.0",
     "@prisma/client": "^2.10.1",
     "apollo-server-express": "^2.19.0",

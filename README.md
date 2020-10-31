@@ -22,7 +22,7 @@ yarn postgres:start
 yarn db:migrate:up
 ```
 
-### Start the GraphQL server
+### Start the GraphQL Server (Service)
 
 ```bash
 cp .env.template .env
@@ -30,6 +30,14 @@ yarn dev
 ```
 
 The server is available in <http://localhost:4001/graphql>.
+
+### Start the GraphQL Gateway
+
+```bash
+yarn gateway
+```
+
+The GraphQL Playground is available in <http://localhost:4000/graphql>.
 
 ### Integration tests
 
@@ -42,23 +50,4 @@ yarn test
 
 ## Authentication & Authorization
 
-If you try to use queries and mutations you will get the error:
-
-```graphql
-query playlist {
-  playlist(where: { id: 1}) {
-    id
-    tracks {
-      id
-    }
-  }
-}
-
-# ==> Run
-{
-  "errors": [
-    {
-      "message": "you must be logged in",
-```
-
-This is because the GraphQL playground is available via [Apollo Gateway](https://github.com/ricardoalmeida/apollo-gateway) project. Please pull this repository and follow instructions how to get it running.
+Gateway authenticates and send proper headers to the service. The service uses graphql-shield to verify permissions.
