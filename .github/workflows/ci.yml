@@ -27,6 +27,6 @@ jobs:
         with:
           node-version: "12.x"
       - run: yarn install
-      - run: yarn share-music build
-      - run: yarn share-music prisma migrate --experimental up --auto-approve --create-db
-      - run: yarn share-music test
+      - run: yarn vitrola build
+      - run: yarn vitrola prisma migrate --experimental up --auto-approve --create-db
+      - run: yarn vitrola test
