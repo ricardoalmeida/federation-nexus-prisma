@@ -20,7 +20,7 @@ jobs:
         ports:
           - 5432:5432
     env:
-      DATABASE_URL: postgres://postgres:postgres@localhost:5432/share-music
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/vitrola
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
