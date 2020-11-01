@@ -1,5 +1,5 @@
 {
-  "name": "share-music",
+  "name": "federation-nexus-prisma",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,12 +7,12 @@
     "clean": "rm -rf dist",
     "build": "yarn -s clean && yarn -s generate && tsc",
     "dev": "env-cmd ts-node-dev --transpile-only ./src/index.ts",
-    "gateway": "env-cmd ts-node-dev --transpile-only ./src/gateway.ts",
+    "gateway": "env-cmd ts-node-dev --transpile-only ./gateway.ts",
     "dev:typecheck": "tsc --noEmit --watch",
     "postgres:start": "docker-compose up -d",
     "db:migrate:save": "yarn prisma migrate save --experimental",
     "db:migrate:up": "yarn prisma migrate up --experimental",
-    "generate": "ts-node --transpile-only -P tsconfig.json src/schema.ts",
+    "generate": "ts-node --transpile-only -P tsconfig.json ./src/schema.ts",
     "test": "jest"
   },
   "jest": {
