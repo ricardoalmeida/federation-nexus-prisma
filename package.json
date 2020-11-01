@@ -5,11 +5,11 @@
   "private": true,
   "workspaces": [
     "shared",
-    "share-music",
+    "vitrola",
     "gateway"
   ],
   "scripts": {
-    "share-music": "yarn workspace share-music",
+    "vitrola": "yarn workspace vitrola",
     "gateway": "yarn workspace gateway",
     "shared": "yarn workspace shared"
   }
