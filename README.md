@@ -51,3 +51,13 @@ yarn test
 ## Authentication & Authorization
 
 Gateway authenticates and send proper headers to the service. The service uses graphql-shield to verify permissions.
+
+## Lerna
+
+```bash
+cd services/vitrola
+yarn prisma generate
+cd ../../
+yarn start-services
+yarn start-gateway
+```
