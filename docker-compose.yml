@@ -6,7 +6,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: share-music
+      POSTGRES_DB: vitrola
     volumes:
       - database-data:/var/lib/postgresql/data/
     ports:
