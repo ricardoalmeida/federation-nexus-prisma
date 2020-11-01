@@ -86,6 +86,7 @@ input NestedStringFilter {
 type Playlist {
   description: String!
   id: Int!
+  tracks(after: PlaylistTrackWhereUniqueInput, before: PlaylistTrackWhereUniqueInput, first: Int, last: Int): [Track!]!
 }
 
 input PlaylistCreateInput {

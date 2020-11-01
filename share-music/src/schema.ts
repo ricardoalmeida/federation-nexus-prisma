@@ -10,6 +10,7 @@ export const Playlist = objectType({
   definition(t) {
     t.model.id();
     t.model.description();
+    t.model.tracks({ type: 'Track' });
   },
 });
 
@@ -44,7 +45,6 @@ const schema = makeSchema({
   plugins: [nexusPrisma({ experimentalCRUD: true })],
   outputs: {
     schema: path.join(process.cwd(), './generated/schema.graphql'),
-    typegen: path.join(__dirname, '../../share-music/node_modules/@types/nexus-typegen/index.d.ts'),
   },
   typegenAutoConfig: {
     contextType: 'Context.Context',
