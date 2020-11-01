@@ -25,7 +25,6 @@ yarn db:migrate:up
 ### Start the GraphQL Server (Service)
 
 ```bash
-cp .env.template .env
 yarn dev
 ```
 
