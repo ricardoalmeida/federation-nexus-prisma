@@ -1,36 +1,45 @@
-# GraphQL Federation Server using Prisma 2 and Nexus Schema
+# GraphQL Apollo Federation, Prisma and Nexus-Schema
 
-## Development
+This example is an GraphQL server implementation in TypeScript using [Apollo Federation](https://www.apollographql.com/docs/federation/), [Prisma](prisma.io) and [Nexus-Schema](https://nexusjs.org/). It uses Postgres database.
 
-If you use VSCode, you can install the plugin: <https://marketplace.visualstudio.com/items?itemName=Prisma.prisma>
+## How to use
 
-### Install dependencies
+### 1. Download and install dependencies
+
+Clone this repository:
+
+```
+git clone git@github.com:ricardoalmeida/federation-nexus-prisma.git
+```
+
+Install yarn dependencies:
 
 ```bash
+cd federation-nexus-prisma
 yarn install
 ```
 
-### Run Postgres database via Docker
+### 2. Start Postgres via Docker
 
 ```bash
-yarn postgres:start
+docker-compose up -d
 ```
 
-### Execute db migrations
+### 3. Run db migrations
 
 ```bash
-yarn db:migrate:up
+yarn prisma migrate up --experimental
 ```
 
-### Start the GraphQL Server (Service)
+### 4. Start Service and Gateway
+
+Vitrola (Service)
 
 ```bash
 yarn dev
 ```
 
-The server is available in <http://localhost:4001/graphql>.
-
-### Start the GraphQL Gateway
+Gateway Server
 
 ```bash
 yarn gateway
@@ -38,9 +47,56 @@ yarn gateway
 
 The GraphQL Playground is available in <http://localhost:4000/graphql>.
 
+## Using the GraphQL API
+
+<details>
+  <summary>Try it out!</summary>
+  <p>
+
+```graphql
+mutation createTrack {
+  createOneTrack(data: { name: "Favorite Track" }) {
+    id
+    name
+  }
+}
+
+mutation createPlaylist {
+  createOnePlaylist(data: { description: "My playlist" }) {
+    id
+  }
+}
+
+query playlists {
+  playlists {
+    id
+    description
+    tracks {
+      id
+    }
+  }
+}
+
+query playlist {
+  playlist(where: { id: 1 }) {
+    id
+    tracks {
+      id
+    }
+  }
+}
+```
+
+  </p>
+</details>
+
+## Development
+
+If you use VSCode, install plugin for Prisma: <https://marketplace.visualstudio.com/items?itemName=Prisma.prisma>
+
 ### Integration tests
 
-Tests are running in Jest, validating from GraphQL endpoint to operations in Postgres. So make sure you have the db up and running.
+GraphQL queries and mutations are using Postgres for an integration test validation. So make sure you have the db up and running.
 
 ```bash
 yarn postgres:start
@@ -49,4 +105,4 @@ yarn test
 
 ## Authentication & Authorization
 
-Gateway authenticates and send proper headers to the service. The service uses graphql-shield to verify permissions.
+The Gateway authenticates the user (TODO) and send proper headers to the service. The service uses graphql-shield to verify permissions.
