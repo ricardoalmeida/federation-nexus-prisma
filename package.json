@@ -5,7 +5,7 @@
   "main": "gateway.ts",
   "private": true,
   "scripts": {
-    "start-gateway": "nodemon gateway.ts",
+    "start-gateway": "env-cmd ts-node-dev gateway.ts",
     "start-service-vitrola": "env-cmd ts-node-dev --transpile-only services/vitrola/src/index.ts",
     "start-services": "concurrently \"yarn:start-service-*\"",
     "postinstall": "lerna bootstrap"
@@ -15,7 +15,6 @@
     "env-cmd": "^10.1.0",
     "jest": "^26.6.1",
     "lerna": "^3.22.1",
-    "nodemon": "latest",
     "ts-jest": "^26.4.3",
     "ts-node": "^9.0.0",
     "ts-node-dev": "^1.0.0",
