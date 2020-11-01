@@ -42,8 +42,47 @@ Tests are running in Jest, validating from GraphQL endpoint to operations in Pos
 
 ```bash
 yarn postgres:start
-yarn lerna run test --stream (Pass ok)
+yarn lerna run test --stream
 ```
+
+<details>
+  <summary>SUCCESS</summary>
+  <p>
+
+```bash
+$ /Users/ricardoalmeida/dev/federation-nexus-prisma/node_modules/.bin/lerna run test --stream
+lerna notice cli v3.22.1
+lerna info versioning independent
+lerna info Executing command in 1 package: "yarn run test"
+vitrola: $ jest
+vitrola: PASS tests/mutations/createOnePlaylist.test.ts (6.563 s)
+vitrola:   ● Console
+vitrola:     console.info
+vitrola:       Enabling inline tracing for this federated service. To disable, use ApolloServerPluginInlineTraceDisabled.
+vitrola:       at ApolloServer.ensurePluginInstantiation (node_modules/apollo-server-core/src/ApolloServer.ts:909:21)
+vitrola:     console.info
+vitrola:       Enabling inline tracing for this federated service. To disable, use ApolloServerPluginInlineTraceDisabled.
+vitrola:       at ApolloServer.ensurePluginInstantiation (node_modules/apollo-server-core/src/ApolloServer.ts:909:21)
+vitrola: PASS tests/queries/playlist.test.ts (7.228 s)
+vitrola:   ● Console
+vitrola:     console.info
+vitrola:       Enabling inline tracing for this federated service. To disable, use ApolloServerPluginInlineTraceDisabled.
+vitrola:       at ApolloServer.ensurePluginInstantiation (node_modules/apollo-server-core/src/ApolloServer.ts:909:21)
+vitrola:     console.info
+vitrola:       Enabling inline tracing for this federated service. To disable, use ApolloServerPluginInlineTraceDisabled.
+vitrola:       at ApolloServer.ensurePluginInstantiation (node_modules/apollo-server-core/src/ApolloServer.ts:909:21)
+vitrola: Test Suites: 2 passed, 2 total
+vitrola: Tests:       4 passed, 4 total
+vitrola: Snapshots:   4 passed, 4 total
+vitrola: Time:        7.908 s, estimated 9 s
+vitrola: Ran all test suites.
+lerna success run Ran npm script 'test' in 1 package in 9.9s:
+lerna success - vitrola
+✨  Done in 11.22s.
+```
+
+  </p>
+</details>
 
 ## Authentication & Authorization
 
