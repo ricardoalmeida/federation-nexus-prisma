@@ -37,7 +37,7 @@ async function run() {
   const app = express();
   server.applyMiddleware({ app });
   app.listen({ port }, () => {
-    console.log(`🚀 Server ${process.env.NODE_ENV} ready at http://localhost:${port}/graphql`);
+    console.log(`🚀 Gateway ${process.env.NODE_ENV} ready at http://localhost:${port}/graphql`);
   });
 }
 
