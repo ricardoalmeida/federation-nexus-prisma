@@ -94,7 +94,7 @@ yarn lerna run build
 ```
 
 <details>
-  <summary>ERROR!</summary>
+  <summary>SUCCESS</summary>
   <p>
 
 ```bash
