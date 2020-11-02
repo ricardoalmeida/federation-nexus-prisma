@@ -23,6 +23,7 @@ describe('createOnePlaylist', () => {
       variables: {
         data: {
           description: 'My playlist',
+          userId,
         },
       },
     });
@@ -52,6 +53,7 @@ describe('createOnePlaylist', () => {
       variables: {
         data: {
           description: 'My playlist',
+          userId,
         },
       },
     });
