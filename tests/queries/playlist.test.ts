@@ -23,6 +23,7 @@ beforeAll(async () => {
   await prisma.playlist.create({
     data: {
       description: 'Playlist description',
+      userId,
     },
   });
 });
