@@ -14,12 +14,12 @@ export const permissions = shield(
       playlist: or(isAuthenticated, isAdmin),
     },
     Mutation: {
-      createOnePlaylist: isAuthenticated,
+      createPlaylist: isAuthenticated,
       updateOnePlaylist: isAuthenticated,
-      deleteOnePlaylist: isAuthenticated,
+      deletePlaylist: isAuthenticated,
       createOneTrack: isAuthenticated,
       updateOneTrack: isAuthenticated,
-      deleteOneTrack: isAuthenticated,
+      deleteTrack: isAuthenticated,
     },
   },
   {
