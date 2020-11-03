@@ -3,6 +3,7 @@ import { applyMiddleware } from 'graphql-middleware';
 import { transformSchemaFederation } from 'graphql-transform-federation';
 import { nexusPrisma } from 'nexus-plugin-prisma';
 import path from 'path';
+import { Context } from './context';
 import { permissions } from './utils/permissions';
 
 export const Playlist = objectType({
@@ -10,6 +11,7 @@ export const Playlist = objectType({
   definition(t) {
     t.model.id();
     t.model.description();
+    t.model.userId();
     t.model.tracks({ type: 'Track' });
   },
 });
@@ -31,7 +33,20 @@ const Query = queryType({
 
 const Mutation = mutationType({
   definition(t) {
-    t.crud.createOnePlaylist();
+    t.crud.createOnePlaylist({
+      alias: 'createPlaylist',
+      async resolve(root: any, args: any, ctx: Context, info: any, originalResolve: any) {
+        args = {
+          ...args,
+          data: {
+            ...args.data,
+            userId: ctx.userId,
+          },
+        };
+        const res = await originalResolve(root, args, ctx, info);
+        return res;
+      },
+    });
     t.crud.updateOnePlaylist();
     t.crud.deleteOnePlaylist();
     t.crud.createOneTrack();
