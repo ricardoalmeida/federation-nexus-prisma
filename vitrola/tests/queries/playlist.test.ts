@@ -1,7 +1,7 @@
 import { createTestClient } from 'apollo-server-testing';
 import { constructTestServer } from '../__utils';
 import { createContext } from '../../src/context';
-import gql from 'graphql-tag';
+import { getPlaylist } from '../graphql';
 
 const { prisma, userId, permissions } = createContext({
   req: { headers: { 'user-id': '123456' } },
@@ -10,19 +10,11 @@ afterAll(async () => {
   await prisma.$disconnect();
 });
 
-const PLAYLIST = gql`
-  query playlist($where: PlaylistWhereUniqueInput!) {
-    playlist(where: $where) {
-      id
-      description
-    }
-  }
-`;
-
 beforeAll(async () => {
   await prisma.playlist.create({
     data: {
       description: 'Playlist description',
+      userId,
     },
   });
 });
@@ -35,7 +27,7 @@ describe('playlist', () => {
 
     const { query } = createTestClient(server);
     const res = await query({
-      query: PLAYLIST,
+      query: getPlaylist,
       variables: {
         where: {
           id: 1,
@@ -66,7 +58,7 @@ describe('playlist', () => {
     });
     const { query } = createTestClient(server);
     const res = await query({
-      query: PLAYLIST,
+      query: getPlaylist,
       variables: {
         where: {
           id: 1,
