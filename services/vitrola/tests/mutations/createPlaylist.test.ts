@@ -11,8 +11,8 @@ afterAll(async () => {
   await prisma.$disconnect();
 });
 
-describe('createOnePlaylist', () => {
-  test('not logged user', async () => {
+describe('createPlaylist', () => {
+  test('rejects not logged user', async () => {
     const { server } = constructTestServer({
       context: () => ({ prisma, userId: 0, permissions }),
     });
@@ -42,7 +42,7 @@ describe('createOnePlaylist', () => {
     `);
   });
 
-  test('creates one playlist', async () => {
+  test('creates successfully', async () => {
     const { server } = constructTestServer({
       context: () => ({ prisma, userId, permissions }),
     });
@@ -58,8 +58,9 @@ describe('createOnePlaylist', () => {
     expect(res).toMatchInlineSnapshot(`
       Object {
         "data": Object {
-          "createOnePlaylist": Object {
+          "createPlaylist": Object {
             "id": 1,
+            "userId": "123456",
           },
         },
         "errors": undefined,

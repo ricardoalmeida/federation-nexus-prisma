@@ -39,10 +39,10 @@ input IntFilter {
 }
 
 type Mutation {
-  createOnePlaylist(data: PlaylistCreateInput!): Playlist!
   createOneTrack(data: TrackCreateInput!): Track!
-  deleteOnePlaylist(where: PlaylistWhereUniqueInput!): Playlist
-  deleteOneTrack(where: TrackWhereUniqueInput!): Track
+  createPlaylist(data: PlaylistCreateInput!): Playlist!
+  deletePlaylist(where: PlaylistWhereUniqueInput!): Playlist
+  deleteTrack(where: TrackWhereUniqueInput!): Track
   updateOnePlaylist(data: PlaylistUpdateInput!, where: PlaylistWhereUniqueInput!): Playlist
   updateOneTrack(data: TrackUpdateInput!, where: TrackWhereUniqueInput!): Track
 }
@@ -83,15 +83,35 @@ input NestedStringFilter {
   startsWith: String
 }
 
+input NestedStringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  not: NestedStringNullableFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input NullableStringFieldUpdateOperationsInput {
+  set: String
+}
+
 type Playlist {
   description: String!
   id: Int!
   tracks(after: PlaylistTrackWhereUniqueInput, before: PlaylistTrackWhereUniqueInput, first: Int, last: Int): [Track!]!
+  userId: String
 }
 
 input PlaylistCreateInput {
   description: String!
   tracks: PlaylistTrackCreateManyWithoutPlaylistInput
+  userId: String
 }
 
 input PlaylistTrackCreateManyWithoutPlaylistInput {
@@ -176,6 +196,7 @@ input PlaylistTrackWhereUniqueInput {
 input PlaylistUpdateInput {
   description: StringFieldUpdateOperationsInput
   tracks: PlaylistTrackUpdateManyWithoutPlaylistInput
+  userId: NullableStringFieldUpdateOperationsInput
 }
 
 input PlaylistWhereInput {
@@ -185,6 +206,7 @@ input PlaylistWhereInput {
   NOT: [PlaylistWhereInput!]
   OR: [PlaylistWhereInput!]
   tracks: PlaylistTrackListRelationFilter
+  userId: StringNullableFilter
 }
 
 input PlaylistWhereUniqueInput {
@@ -216,6 +238,21 @@ input StringFilter {
   lte: String
   mode: QueryMode
   not: NestedStringFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input StringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: NestedStringNullableFilter
   notIn: [String!]
   startsWith: String
 }

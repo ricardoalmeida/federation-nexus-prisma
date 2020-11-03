@@ -1,6 +1,6 @@
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 generator client {
@@ -11,7 +11,7 @@ model Playlist {
   id          Int             @id @default(autoincrement())
   description String
   tracks      PlaylistTrack[]
-  userId      String?
+  userId      String
 }
 
 model PlaylistTrack {
