@@ -48,10 +48,10 @@ const Mutation = mutationType({
       },
     });
     t.crud.updateOnePlaylist();
-    t.crud.deleteOnePlaylist();
+    t.crud.deleteOnePlaylist({ alias: 'deletePlaylist' });
     t.crud.createOneTrack();
     t.crud.updateOneTrack();
-    t.crud.deleteOneTrack();
+    t.crud.deleteOneTrack({ alias: 'deleteTrack' });
   },
 });
 

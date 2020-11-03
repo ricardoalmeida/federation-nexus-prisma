@@ -41,8 +41,8 @@ input IntFilter {
 type Mutation {
   createOneTrack(data: TrackCreateInput!): Track!
   createPlaylist(data: PlaylistCreateInput!): Playlist!
-  deleteOnePlaylist(where: PlaylistWhereUniqueInput!): Playlist
-  deleteOneTrack(where: TrackWhereUniqueInput!): Track
+  deletePlaylist(where: PlaylistWhereUniqueInput!): Playlist
+  deleteTrack(where: TrackWhereUniqueInput!): Track
   updateOnePlaylist(data: PlaylistUpdateInput!, where: PlaylistWhereUniqueInput!): Playlist
   updateOneTrack(data: TrackUpdateInput!, where: TrackWhereUniqueInput!): Track
 }

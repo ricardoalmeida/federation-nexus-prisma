@@ -16,10 +16,10 @@ export const permissions = shield(
     Mutation: {
       createPlaylist: isAuthenticated,
       updateOnePlaylist: isAuthenticated,
-      deleteOnePlaylist: isAuthenticated,
+      deletePlaylist: isAuthenticated,
       createOneTrack: isAuthenticated,
       updateOneTrack: isAuthenticated,
-      deleteOneTrack: isAuthenticated,
+      deleteTrack: isAuthenticated,
     },
   },
   {
