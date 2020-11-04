@@ -2,9 +2,11 @@
   "name": "gateway",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "dev": "env-cmd ts-node-dev --transpile-only ./src/index.ts"
+    "dev": "env-cmd ts-node-dev --transpile-only ./src/index.ts",
+    "clean": "rm -rf dist",
+    "build": "yarn -s clean && tsc"
   },
   "dependencies": {
     "@apollo/gateway": "^0.21.0"

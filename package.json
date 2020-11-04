@@ -2,11 +2,13 @@
   "name": "federation-nexus-prisma",
   "version": "1.0.0",
   "description": "",
+  "main": "dist/index.js",
   "private": true,
   "workspaces": [
     "shared",
     "vitrola",
-    "gateway"
+    "gateway",
+    "packages/*"
   ],
   "scripts": {
     "vitrola": "yarn workspace vitrola",
