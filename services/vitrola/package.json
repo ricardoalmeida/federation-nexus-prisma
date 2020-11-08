@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "yarn -s clean && yarn -s generate && tsc",
+    "build": "yarn -s clean && yarn prisma generate && yarn -s generate && tsc",
     "dev": "env-cmd ts-node-dev --transpile-only ./src/index.ts",
     "dev:typecheck": "tsc --noEmit --watch",
     "postgres:start": "docker-compose up -d",
