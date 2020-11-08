@@ -6,13 +6,13 @@ WORKDIR /app
 
 RUN apk add --no-cache --virtual .build-deps alpine-sdk python
 
-COPY package.json newrelic.js yarn.lock ./
+COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
 
 COPY . .
 ENV SERVER_PORT=$SERVER_PORT
 
-RUN yarn prisma:generate
+RUN yarn prisma generate
 RUN yarn run build && apk del .build-deps
 
 # Remove dev dependencies
