@@ -23,7 +23,6 @@ COPY prisma/ ./prisma/
 COPY generated/ ./generated/
 
 # Build
-RUN yarn prisma generate
 RUN yarn run build
 
 ### RUNNER ###
@@ -35,15 +34,15 @@ COPY --from=builder /app/node_modules/@prisma/client/ ./node_modules/@prisma/cli
 COPY --from=builder /app/node_modules/.prisma/client/ ./node_modules/.prisma/client/
 
 # Copy runtime project
-COPY --from=builder /app/dist/src ./
+COPY --from=builder /app/dist/ ./dist/src/
 COPY package.json ./
 
-USER node
+# USER node
 ARG SERVER_PORT=4001
 ENV SERVER_PORT=$SERVER_PORT
 EXPOSE $SERVER_PORT
 
-CMD ["node", "dist/index.js"]]
+CMD ["node", "dist/src/index.js"]]
 
 # ARG SERVER_PORT=4001
 # ENV SERVER_PORT=$SERVER_PORT
