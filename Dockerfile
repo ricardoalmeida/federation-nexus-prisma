@@ -15,9 +15,11 @@ ENV SERVER_PORT=$SERVER_PORT
 RUN yarn prisma generate
 RUN yarn run build && apk del .build-deps
 
+ENV NODE_ENV=staging
+
 # Remove dev dependencies
 RUN yarn install --production
 
 EXPOSE $SERVER_PORT
 
-CMD ["node", "dist/index.js"]
+CMD ["node", "dist/src/index.js"]
