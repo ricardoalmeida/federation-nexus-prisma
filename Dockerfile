@@ -27,9 +27,9 @@ COPY packages/vitrola/ ./packages/vitrola/
 
 # Build
 # RUN yarn --cwd ./packages/shared/ build
-RUN yarn --cwd ./packages/gateway/ build && apk del .build-deps
-# RUN yarn --cwd ./packages/vitrola/ generate
-RUN yarn --cwd ./packages/vitrola/ build && apk del .build-deps
+RUN yarn --cwd ./packages/gateway/ build
+RUN yarn --cwd ./packages/vitrola/ generate
+RUN yarn --cwd ./packages/vitrola/ build
 
 ### RUNNER ###
 FROM base
@@ -46,21 +46,9 @@ COPY --from=builder /app/packages/vitrola/dist/src/ ./src/
 COPY packages/vitrola/package.json ./
 
 USER node
+ENV NODE_ENV=staging
 ARG SERVER_PORT=4001
 ENV SERVER_PORT=$SERVER_PORT
 EXPOSE $SERVER_PORT
 
-CMD ["node", "dist/src/index.js"]]
-
-# ARG SERVER_PORT=4001
-# ENV SERVER_PORT=$SERVER_PORT
-
-# RUN yarn prisma:generate
-# RUN yarn run build && apk del .build-deps
-
-# # Remove dev dependencies
-# RUN yarn install --production
-
-# EXPOSE $SERVER_PORT
-
-# CMD ["node", "dist/index.js"]
+CMD ["node", "dist/src/index.js"]
