@@ -43,4 +43,4 @@ ARG SERVER_PORT=4001
 ENV SERVER_PORT=$SERVER_PORT
 EXPOSE $SERVER_PORT
 
-CMD ["node", "dist/src/index.js"]]
+CMD ["node", "dist/src/index.js"]
