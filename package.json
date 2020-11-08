@@ -8,7 +8,9 @@
     "start-gateway": "env-cmd ts-node-dev gateway.ts",
     "start-service-vitrola": "env-cmd ts-node-dev --transpile-only services/vitrola/src/index.ts",
     "start-services": "concurrently \"yarn:start-service-*\"",
-    "postinstall": "lerna bootstrap"
+    "postinstall": "lerna bootstrap",
+    "build": "lerna run build",
+    "test": "lerna run test"
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
@@ -35,5 +37,8 @@
     "@apollo/gateway": "latest",
     "apollo-server": "latest",
     "graphql": "latest"
-  }
+  },
+  "workspaces": [
+    "services/*"
+  ]
 }
