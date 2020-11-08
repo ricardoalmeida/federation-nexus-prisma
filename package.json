@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "yarn -s clean && yarn -s generate && tsc",
+    "build": "yarn -s clean && yarn prisma generate && yarn -s generate && tsc",
     "dev": "env-cmd ts-node-dev --transpile-only ./src/index.ts",
     "gateway": "env-cmd ts-node-dev --transpile-only ./gateway.ts",
     "dev:typecheck": "tsc --noEmit --watch",
