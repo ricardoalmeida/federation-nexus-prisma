@@ -265,7 +265,7 @@ input StringNullableFilter {
 }
 
 type Track {
-  id: Int!
+  id: ID
   name: String!
 }
 
@@ -279,4 +279,9 @@ input TrackUpdateInput {
 
 input TrackWhereUniqueInput {
   id: Int
+}
+
+type User {
+  id: ID
+  playlists: Playlist
 }
