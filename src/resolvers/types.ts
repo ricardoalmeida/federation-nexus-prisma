@@ -1,4 +1,4 @@
-import { objectType } from '@nexus/schema';
+import { extendType, objectType } from '@nexus/schema';
 
 export const Playlist = objectType({
   name: 'Playlist',
@@ -13,7 +13,24 @@ export const Playlist = objectType({
 export const Track = objectType({
   name: 'Track',
   definition(t) {
-    t.model.id();
+    t.id('id');
     t.model.name();
+  },
+});
+
+export const User = extendType({
+  type: 'User',
+  definition(t) {
+    t.id('id', {
+      nullable: true,
+    });
+    t.field('playlists', {
+      type: Playlist,
+      async resolve(user, args, ctx) {
+        return await ctx.prisma.playlist.findMany({
+          where: { userId: user.id },
+        });
+      },
+    });
   },
 });

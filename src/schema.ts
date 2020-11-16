@@ -33,6 +33,15 @@ const federatedSchema = applyMiddleware(
     Query: {
       extend: true,
     },
+    User: {
+      extend: true,
+      keyFields: ['id'],
+      fields: {
+        id: {
+          external: true,
+        },
+      },
+    },
   }),
   permissions,
 );
