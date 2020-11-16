@@ -116,7 +116,13 @@ input PlaylistCreateInput {
 
 input PlaylistTrackCreateManyWithoutPlaylistInput {
   connect: [PlaylistTrackWhereUniqueInput!]
+  connectOrCreate: [PlaylistTrackCreateOrConnectWithoutplaylistInput!]
   create: [PlaylistTrackCreateWithoutPlaylistInput!]
+}
+
+input PlaylistTrackCreateOrConnectWithoutplaylistInput {
+  create: PlaylistTrackCreateWithoutPlaylistInput!
+  where: PlaylistTrackWhereUniqueInput!
 }
 
 input PlaylistTrackCreateWithoutPlaylistInput {
@@ -140,41 +146,42 @@ input PlaylistTrackScalarWhereInput {
   trackId: IntFilter
 }
 
-input PlaylistTrackUpdateManyDataInput {
+input PlaylistTrackUpdateManyMutationInput {
   addedAt: DateTimeFieldUpdateOperationsInput
   trackId: IntFieldUpdateOperationsInput
 }
 
 input PlaylistTrackUpdateManyWithoutPlaylistInput {
   connect: [PlaylistTrackWhereUniqueInput!]
+  connectOrCreate: [PlaylistTrackCreateOrConnectWithoutplaylistInput!]
   create: [PlaylistTrackCreateWithoutPlaylistInput!]
   delete: [PlaylistTrackWhereUniqueInput!]
   deleteMany: [PlaylistTrackScalarWhereInput!]
   disconnect: [PlaylistTrackWhereUniqueInput!]
   set: [PlaylistTrackWhereUniqueInput!]
   update: [PlaylistTrackUpdateWithWhereUniqueWithoutPlaylistInput!]
-  updateMany: [PlaylistTrackUpdateManyWithWhereNestedInput!]
+  updateMany: [PlaylistTrackUpdateManyWithWhereWithoutPlaylistInput!]
   upsert: [PlaylistTrackUpsertWithWhereUniqueWithoutPlaylistInput!]
 }
 
-input PlaylistTrackUpdateManyWithWhereNestedInput {
-  data: PlaylistTrackUpdateManyDataInput!
+input PlaylistTrackUpdateManyWithWhereWithoutPlaylistInput {
+  data: PlaylistTrackUpdateManyMutationInput!
   where: PlaylistTrackScalarWhereInput!
 }
 
-input PlaylistTrackUpdateWithoutPlaylistDataInput {
+input PlaylistTrackUpdateWithoutPlaylistInput {
   addedAt: DateTimeFieldUpdateOperationsInput
   trackId: IntFieldUpdateOperationsInput
 }
 
 input PlaylistTrackUpdateWithWhereUniqueWithoutPlaylistInput {
-  data: PlaylistTrackUpdateWithoutPlaylistDataInput!
+  data: PlaylistTrackUpdateWithoutPlaylistInput!
   where: PlaylistTrackWhereUniqueInput!
 }
 
 input PlaylistTrackUpsertWithWhereUniqueWithoutPlaylistInput {
   create: PlaylistTrackCreateWithoutPlaylistInput!
-  update: PlaylistTrackUpdateWithoutPlaylistDataInput!
+  update: PlaylistTrackUpdateWithoutPlaylistInput!
   where: PlaylistTrackWhereUniqueInput!
 }
 
