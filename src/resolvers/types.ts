@@ -3,7 +3,7 @@ import { extendType, objectType } from '@nexus/schema';
 export const Playlist = objectType({
   name: 'Playlist',
   definition(t) {
-    t.model.id();
+    t.id('id');
     t.model.description();
     t.model.userId();
     t.model.tracks({ type: 'Track' });
