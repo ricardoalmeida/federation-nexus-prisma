@@ -103,7 +103,7 @@ input NullableStringFieldUpdateOperationsInput {
 
 type Playlist {
   description: String!
-  id: ID
+  id: Int!
   tracks(after: PlaylistTrackWhereUniqueInput, before: PlaylistTrackWhereUniqueInput, first: Int, last: Int): [Track!]!
   userId: String
 }
