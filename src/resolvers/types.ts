@@ -21,9 +21,7 @@ export const Track = objectType({
 export const User = extendType({
   type: 'User',
   definition(t) {
-    t.id('id', {
-      nullable: true,
-    });
+    t.id('id');
     t.field('playlists', {
       type: Playlist,
       async resolve(user, args, ctx) {
