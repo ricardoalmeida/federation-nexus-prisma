@@ -40,7 +40,7 @@
     "graphql-scalars": "^1.4.1",
     "graphql-shield": "^7.4.0",
     "graphql-transform-federation": "^2.1.0",
-    "nexus-plugin-prisma": "^0.24.0"
+    "nexus-plugin-prisma": "^0.25.0"
   },
   "devDependencies": {
     "@prisma/cli": "2.11.0",
