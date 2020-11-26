@@ -560,18 +560,18 @@
   resolved "https://registry.yarnpkg.com/@prisma/bar/-/bar-0.0.1.tgz#088c4fbbb79c588391437ade9fd3a85527e753b3"
   integrity sha512-FVLhwVkbfhXlBhroWfIXMLi+3Jh9IEzYp+9z+MUUiw3ZsbcoAil7CN9/QIjHc4/TcCRyRfuSmT7qCnn4O+TjJw==
 
-"@prisma/cli@2.12.0":
-  version "2.12.0"
-  resolved "https://registry.yarnpkg.com/@prisma/cli/-/cli-2.12.0.tgz#1c607e53b23632e01bf0b1ee86b5ab5a8864dfef"
-  integrity sha512-6olsgYNo1WePykEjKD3I49OCu9QKASoLLYV04y5UZxBqwkfxPoD8ppE+kc1nvRF8u+TU0oTLMphNTj2/l6tNsg==
+"@prisma/cli@2.12.1":
+  version "2.12.1"
+  resolved "https://registry.yarnpkg.com/@prisma/cli/-/cli-2.12.1.tgz#1f52ab2a363ae4cc88d4d18933bd304ed7f80612"
+  integrity sha512-obkwK95dEeifCdVehG0rS0BlPQGLsOtc9U1MgbrjNX3MnhXQdwROnvymfPB3DBlNyoLoHGklPgi9UlwBokNXcQ==
   dependencies:
     "@prisma/bar" "^0.0.1"
     "@prisma/engines" "2.12.0-18.cf0680a1bfe8d5e743dc659cc7f08009f9587d58"
 
-"@prisma/client@2.12.0":
-  version "2.12.0"
-  resolved "https://registry.yarnpkg.com/@prisma/client/-/client-2.12.0.tgz#6910a24607357ea272ecb516f44eb8730bd7bd4c"
-  integrity sha512-OozxNF5I8+amaMLlb7NZK3XbvmUgBRUpq2cqresmIhsrfH/LaOaAr4riDW3cF/YgIEpb4tgPoSUEDI3VKyD4yg==
+"@prisma/client@2.12.1":
+  version "2.12.1"
+  resolved "https://registry.yarnpkg.com/@prisma/client/-/client-2.12.1.tgz#ff655c9cc1188035303f374d2f9f794b66fc18c7"
+  integrity sha512-HP4/E9sRdxw/FB7XP4EeRa5ri8Lp1U/L7G4VAA95aM8C+8ARioQHMNDpEjC83NrOrOr4EcaZV5pXDDQL1H+F0g==
   dependencies:
     "@prisma/engines-version" "2.12.0-18.cf0680a1bfe8d5e743dc659cc7f08009f9587d58"
 
@@ -691,9 +691,9 @@
     "@babel/types" "^7.0.0"
 
 "@types/babel__traverse@*", "@types/babel__traverse@^7.0.4", "@types/babel__traverse@^7.0.6":
-  version "7.0.15"
-  resolved "https://registry.yarnpkg.com/@types/babel__traverse/-/babel__traverse-7.0.15.tgz#db9e4238931eb69ef8aab0ad6523d4d4caa39d03"
-  integrity sha512-Pzh9O3sTK8V6I1olsXpCfj2k/ygO2q1X0vhhnDrEQyYLHZesWz+zMZMVcwXLCYf0U36EtmyYaFGPfXlTtDHe3A==
+  version "7.0.16"
+  resolved "https://registry.yarnpkg.com/@types/babel__traverse/-/babel__traverse-7.0.16.tgz#0bbbf70c7bc4193210dd27e252c51260a37cd6a7"
+  integrity sha512-S63Dt4CZOkuTmpLGGWtT/mQdVORJOpx6SZWGVaP56dda/0Nx5nEe82K7/LAm8zYr6SfMq+1N2OreIOrHAx656w==
   dependencies:
     "@babel/types" "^7.3.0"
 
@@ -1783,9 +1783,9 @@ copy-descriptor@^0.1.0:
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
 
 core-js@^3.0.1, core-js@^3.4.0:
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.7.0.tgz#b0a761a02488577afbf97179e4681bf49568520f"
-  integrity sha512-NwS7fI5M5B85EwpWuIwJN4i/fbisQUwLwiSNUWeXlkAZ0sbBjLEvLvFLf1uzAUV66PcEPt4xCGCmOZSxVf3xzA==
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.8.0.tgz#0fc2d4941cadf80538b030648bb64d230b4da0ce"
+  integrity sha512-W2VYNB0nwQQE7tKS7HzXd7r2y/y2SVJl4ga6oH/dnaLFzM0o2lB2P3zCkWj5Wc/zyMYjtgd5Hmhk0ObkQFZOIA==
 
 core-util-is@1.0.2:
   version "1.0.2"
@@ -2575,10 +2575,10 @@ graphql-tools@^4.0.0, graphql-tools@^4.0.5:
     iterall "^1.1.3"
     uuid "^3.1.0"
 
-graphql-transform-federation@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/graphql-transform-federation/-/graphql-transform-federation-2.1.0.tgz#ff95d5a3be982f047cd5604cd2a866d49bd26827"
-  integrity sha512-mpTfWKLBJXr/b6OmwWEa4M5vA6OdNGFszEZMHUwgd0eD0/khDQK+aaks0Ufl/bRd01K1h9N+n1pf8DQcXXPjGg==
+graphql-transform-federation@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/graphql-transform-federation/-/graphql-transform-federation-2.2.0.tgz#b7939ec978bace6f7e7c8be5f6900b3096820bd7"
+  integrity sha512-BYyh5teDshQvh3mE/7xUSr9GnO8G8qC47MxXE5ELoA3htfkBGo8I1rXks8bowu644NMcIINJFJrIgn4tJVZ/uQ==
 
 graphql-upload@^8.0.2:
   version "8.1.0"
@@ -2880,9 +2880,9 @@ is-ci@^2.0.0:
     ci-info "^2.0.0"
 
 is-core-module@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/is-core-module/-/is-core-module-2.1.0.tgz#a4cc031d9b1aca63eecbd18a650e13cb4eeab946"
-  integrity sha512-YcV7BgVMRFRua2FqQzKtTDMz8iCuLEyGKjr70q8Zm1yy2qKcurbFEd79PAdHV77oL3NrAaOVQIbMmiHQCHB7ZA==
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/is-core-module/-/is-core-module-2.2.0.tgz#97037ef3d52224d85163f5597b2b63d9afed981a"
+  integrity sha512-XRAfAdyyY5F5cOXn7hYQDqh2Xmii+DEfIcQGxK/uNwMHhIkPWO0g8msXcbzLe+MpGoR951MlqM/2iIlU4vKDdQ==
   dependencies:
     has "^1.0.3"
 
