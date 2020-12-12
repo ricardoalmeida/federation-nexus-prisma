@@ -5,13 +5,11 @@
   "main": "src/index.ts",
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "yarn -s clean && yarn prisma generate && yarn -s generate && tsc",
-    "dev": "env-cmd ts-node-dev --transpile-only ./src/index.ts",
-    "gateway": "env-cmd ts-node-dev --transpile-only ./gateway.ts",
+    "build": "yarn -s clean && yarn -s generate && tsc",
+    "dev": "env-cmd ts-node-dev --respawn --transpile-only ./src/index.ts ./gateway.ts",
+    "dev:gateway": "env-cmd ts-node-dev --respawn --transpile-only ./gateway.ts",
     "dev:typecheck": "tsc --noEmit --watch",
     "postgres:start": "docker-compose up -d",
-    "db:migrate:save": "yarn prisma migrate save --experimental",
-    "db:migrate:up": "yarn prisma migrate up --experimental",
     "generate": "ts-node --transpile-only -P tsconfig.json ./src/schema.ts",
     "test": "jest"
   },
