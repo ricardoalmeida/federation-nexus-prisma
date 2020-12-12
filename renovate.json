@@ -2,5 +2,11 @@
   "extends": ["config:base", ":assignee(ricardoalmeida)"],
   "patch": {
     "automerge": true
-  }
+  },
+  "packageRules": [
+    {
+      "depTypeList": ["dependencies"],
+      "rangeStrategy": "pin"
+    }
+  ]
 }
