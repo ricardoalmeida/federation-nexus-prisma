@@ -1,4 +1,4 @@
-import { mutationType } from '@nexus/schema';
+import { mutationType } from 'nexus';
 import { Context } from '../context';
 
 export const Mutation = mutationType({

@@ -539,14 +539,6 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@nexus/schema@0.19.2":
-  version "0.19.2"
-  resolved "https://registry.yarnpkg.com/@nexus/schema/-/schema-0.19.2.tgz#a589fedd1b3a57b1d8ce56f0a86a700513083ef0"
-  integrity sha512-/bN+Rb+uM98n/Hll1bgODd8y5yOEPOUY6lMi3QdKOR7uYA7CEt0zbfbEEBb/S7YB07/S8s6HBDX1r8YGAu+Wwg==
-  dependencies:
-    iterall "^1.3.0"
-    tslib "^2.0.3"
-
 "@npmcli/move-file@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@npmcli/move-file/-/move-file-1.0.1.tgz#de103070dac0f48ce49cf6693c23af59c0f70464"
@@ -734,9 +726,9 @@
     "@types/express" "*"
 
 "@types/express-serve-static-core@*":
-  version "4.17.15"
-  resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.17.15.tgz#7c3d37829a991da9a507c1efd44d97532e8909e3"
-  integrity sha512-pb71P0BrBAx7cQE+/7QnA1HTQUkdBKMlkPY7lHUMn0YvPJkL2UA+KW3BdWQ309IT+i9En/qm45ZxpjIcpgEhNQ==
+  version "4.17.16"
+  resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.17.16.tgz#56626e2f60bdd9a5193bc84a1042a506eeb69da7"
+  integrity sha512-hGGiDMatRhcRF2F0EsxSX93iKQJom6No2RwwCm/dvVtNt6FMuq+A/Y4qUZZGqIjqe0LE/jN0wzW86yDFSJwn7A==
   dependencies:
     "@types/node" "*"
     "@types/qs" "*"
@@ -3999,10 +3991,10 @@ negotiator@0.6.2:
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.2.tgz#feacf7ccf525a77ae9634436a64883ffeca346fb"
   integrity sha512-hZXc7K2e+PgeI1eDBe/10Ard4ekbfrrqG8Ep+8Jmf4JID2bNg7NvCPOZN+kfF574pFQI7mum2AUqDidoKqcTOw==
 
-nexus-plugin-prisma@0.26.0:
-  version "0.26.0"
-  resolved "https://registry.yarnpkg.com/nexus-plugin-prisma/-/nexus-plugin-prisma-0.26.0.tgz#6af95487f99c42eb64e1979e4f3e098f98691c43"
-  integrity sha512-PdILhO159YfygqtLTS1txx8KlLV7ZcyKEIgWYClXYNNsUwMccGA65x76kNnU29PDV0PfWzfm/VU26iIBavXmoA==
+nexus-plugin-prisma@0.27.0:
+  version "0.27.0"
+  resolved "https://registry.yarnpkg.com/nexus-plugin-prisma/-/nexus-plugin-prisma-0.27.0.tgz#0fa41a66344f3ab0d502d2d9c7c7e294e4d6d044"
+  integrity sha512-MY2elMolsSfwtCTAI/VAs+cU9M9Ju++b2ZA0B/RzaUC2UeZQQB8MF6/7neKkRdibrjfFXNPYFUxLDOtp2ovoMg==
   dependencies:
     camelcase "^6.0.0"
     fs-jetpack "^4.0.0"
@@ -4010,6 +4002,14 @@ nexus-plugin-prisma@0.26.0:
     outdent "^0.7.1"
     pluralize "^8.0.0"
     semver "^7.3.2"
+
+nexus@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/nexus/-/nexus-1.0.0.tgz#633b39abae1d7e9472ca40e37bb5d3e1263f6aa3"
+  integrity sha512-Toa91s9BJsX8pDX34QkOyKdnw8MmuOQkEboZMKSxvF9mWuAFkY74Zj1ssaexeV7yTQ7HoLQYUQ00FaWzXPmggQ==
+  dependencies:
+    iterall "^1.3.0"
+    tslib "^2.0.3"
 
 nice-try@^1.0.4:
   version "1.0.5"

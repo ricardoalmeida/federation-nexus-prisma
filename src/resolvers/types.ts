@@ -1,4 +1,4 @@
-import { extendType, objectType } from '@nexus/schema';
+import { extendType, objectType } from 'nexus';
 
 export const Playlist = objectType({
   name: 'Playlist',
