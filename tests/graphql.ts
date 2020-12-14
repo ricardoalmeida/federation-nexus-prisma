@@ -3,8 +3,10 @@ import gql from 'graphql-tag';
 export const createPlaylist = gql`
   mutation createPlaylist($data: PlaylistCreateInput!) {
     createPlaylist(data: $data) {
-      id
-      userId
+      ... on Playlist {
+        id
+        userId
+      }
     }
   }
 `;

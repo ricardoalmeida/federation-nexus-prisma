@@ -40,7 +40,7 @@ input IntFilter {
 
 type Mutation {
   createOneTrack(data: TrackCreateInput!): Track!
-  createPlaylist(data: PlaylistCreateInput!): Playlist!
+  createPlaylist(data: PlaylistCreateInput!): PlaylistOrError!
   deletePlaylist(where: PlaylistWhereUniqueInput!): Playlist
   deleteTrack(where: TrackWhereUniqueInput!): Track
   updateOnePlaylist(data: PlaylistUpdateInput!, where: PlaylistWhereUniqueInput!): Playlist
@@ -110,15 +110,14 @@ type Playlist {
 
 input PlaylistCreateInput {
   description: String!
-  tracks: PlaylistTrackCreateManyWithoutPlaylistInput
-  userId: String
 }
 
-input PlaylistTrackCreateManyWithoutPlaylistInput {
-  connect: [PlaylistTrackWhereUniqueInput!]
-  connectOrCreate: [PlaylistTrackCreateOrConnectWithoutplaylistInput!]
-  create: [PlaylistTrackCreateWithoutPlaylistInput!]
+type PlaylistError {
+  code: String
+  message: String
 }
+
+union PlaylistOrError = Playlist | PlaylistError
 
 input PlaylistTrackCreateOrConnectWithoutplaylistInput {
   create: PlaylistTrackCreateWithoutPlaylistInput!
