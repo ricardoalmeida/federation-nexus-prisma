@@ -1,20 +1,32 @@
-import { mutationType } from '@nexus/schema';
+import { arg, mutationType, nonNull } from '@nexus/schema';
 import { Context } from '../context';
+import { ApplicationErrors, PrismaErrors } from '../utils/errors';
+import { PlaylistCreateInput, PlaylistOrError } from './types';
 
 export const Mutation = mutationType({
   definition(t) {
-    t.crud.createOnePlaylist({
-      alias: 'createPlaylist',
-      async resolve(root: any, args: any, ctx: Context, info: any, originalResolve: any) {
-        args = {
-          ...args,
-          data: {
-            ...args.data,
-            userId: ctx.userId,
-          },
-        };
-        const res = await originalResolve(root, args, ctx, info);
-        return res;
+    t.nonNull.field('createPlaylist', {
+      type: PlaylistOrError,
+      args: {
+        data: nonNull(arg({ type: PlaylistCreateInput })),
+      },
+      async resolve(parent: any, { data }, ctx: Context) {
+        try {
+          const newPlaylist = await ctx.prisma.playlist.create({
+            data: {
+              ...data,
+              userId: ctx.userId,
+            },
+          });
+          return newPlaylist;
+        } catch (e) {
+          if (e.code === PrismaErrors.ConstraintError) {
+            return {
+              code: ApplicationErrors.ConstraintError,
+              message: 'Playlist already taken',
+            };
+          }
+        }
       },
     });
     t.crud.updateOnePlaylist();

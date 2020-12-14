@@ -1,4 +1,4 @@
-import { extendType, objectType } from '@nexus/schema';
+import { extendType, inputObjectType, objectType, unionType } from '@nexus/schema';
 
 export const Playlist = objectType({
   name: 'Playlist',
@@ -15,6 +15,30 @@ export const Track = objectType({
   definition(t) {
     t.id('id');
     t.model.name();
+  },
+});
+
+export const PlaylistCreateInput = inputObjectType({
+  name: 'PlaylistCreateInput',
+  definition(t) {
+    t.nonNull.string('description');
+  },
+});
+export const PlaylistError = objectType({
+  name: 'PlaylistError',
+  definition(t) {
+    t.string('message');
+    t.string('code');
+  },
+});
+
+export const PlaylistOrError = unionType({
+  name: 'PlaylistOrError',
+  definition(t) {
+    t.members(Playlist, PlaylistError);
+  },
+  resolveType(data) {
+    return data.code ? 'PlaylistError' : 'Playlist';
   },
 });
 
