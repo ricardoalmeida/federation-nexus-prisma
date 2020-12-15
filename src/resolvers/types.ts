@@ -6,15 +6,26 @@ export const Playlist = objectType({
     t.model.id();
     t.model.description();
     t.model.userId();
-    t.model.tracks({ type: 'Track' });
+    t.model.tracks();
   },
 });
 
 export const Track = objectType({
   name: 'Track',
   definition(t) {
-    t.id('id');
+    t.model.id();
     t.model.name();
+  },
+});
+
+export const PlaylistTrack = objectType({
+  name: 'PlaylistTrack',
+  definition(t) {
+    t.model.id();
+    t.model.addedAt();
+    t.model.playlist();
+    t.model.playlistId();
+    t.model.trackId();
   },
 });
 
@@ -38,7 +49,7 @@ export const PlaylistOrError = unionType({
     t.members(Playlist, PlaylistError);
   },
   resolveType(data) {
-    return data.code ? 'PlaylistError' : 'Playlist';
+    return 'code' in data ? 'PlaylistError' : 'Playlist';
   },
 });
 
