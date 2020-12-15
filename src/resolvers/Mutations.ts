@@ -26,6 +26,10 @@ export const Mutation = mutationType({
               message: 'Playlist already taken',
             };
           }
+          return {
+            code: ApplicationErrors.InternalServerError,
+            message: 'Sorry something went wrong.',
+          };
         }
       },
     });
