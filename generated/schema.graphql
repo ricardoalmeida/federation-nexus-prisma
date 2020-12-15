@@ -104,7 +104,7 @@ input NullableStringFieldUpdateOperationsInput {
 type Playlist {
   description: String!
   id: Int!
-  tracks(after: PlaylistTrackWhereUniqueInput, before: PlaylistTrackWhereUniqueInput, first: Int, last: Int): [Track!]!
+  tracks(after: PlaylistTrackWhereUniqueInput, before: PlaylistTrackWhereUniqueInput, first: Int, last: Int): [PlaylistTrack!]!
   userId: String
 }
 
@@ -118,6 +118,14 @@ type PlaylistError {
 }
 
 union PlaylistOrError = Playlist | PlaylistError
+
+type PlaylistTrack {
+  addedAt: DateTime!
+  id: Int!
+  playlist: Playlist!
+  playlistId: Int!
+  trackId: Int!
+}
 
 input PlaylistTrackCreateOrConnectWithoutplaylistInput {
   create: PlaylistTrackCreateWithoutPlaylistInput!
@@ -264,7 +272,7 @@ input StringNullableFilter {
 }
 
 type Track {
-  id: ID
+  id: Int!
   name: String!
 }
 

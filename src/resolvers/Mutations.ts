@@ -1,4 +1,4 @@
-import { arg, mutationType, nonNull } from '@nexus/schema';
+import { arg, mutationType, nonNull } from 'nexus';
 import { Context } from '../context';
 import { ApplicationErrors, PrismaErrors } from '../utils/errors';
 import { PlaylistCreateInput, PlaylistOrError } from './types';
@@ -26,6 +26,10 @@ export const Mutation = mutationType({
               message: 'Playlist already taken',
             };
           }
+          return {
+            code: ApplicationErrors.InternalServerError,
+            message: 'Sorry something went wrong.',
+          };
         }
       },
     });
