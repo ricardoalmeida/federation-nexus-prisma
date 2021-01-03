@@ -290,5 +290,5 @@ input TrackWhereUniqueInput {
 
 type User {
   id: ID
-  playlists: Playlist
+  playlists: [Playlist]
 }

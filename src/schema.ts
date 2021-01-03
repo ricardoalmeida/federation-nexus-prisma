@@ -13,6 +13,19 @@ const schema = makeSchema({
     schema: path.join(process.cwd(), './generated/schema.graphql'),
     typegen: path.join(__dirname, '../../node_modules/@types/nexus-typegen/index.d.ts'),
   },
+  contextType: {
+    module: path.join(__dirname, 'context.ts'),
+    export: 'Context',
+    alias: 'ctx',
+  },
+  sourceTypes: {
+    modules: [
+      {
+        module: require.resolve('.prisma/client/index.d.ts'),
+        alias: 'prisma',
+      },
+    ],
+  },
 });
 
 const federatedSchema = applyMiddleware(

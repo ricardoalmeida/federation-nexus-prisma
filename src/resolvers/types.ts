@@ -57,9 +57,9 @@ export const User = extendType({
   type: 'User',
   definition(t) {
     t.id('id');
-    t.field('playlists', {
+    t.list.field('playlists', {
       type: Playlist,
-      async resolve(user, args, ctx) {
+      async resolve(user, _args, ctx) {
         return await ctx.prisma.playlist.findMany({
           where: { userId: user.id },
         });
