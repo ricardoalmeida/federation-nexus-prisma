@@ -14,7 +14,7 @@ const schema = makeSchema({
     typegen: path.join(__dirname, '../../node_modules/@types/nexus-typegen/index.d.ts'),
   },
   contextType: {
-    module: path.join(__dirname, 'types.ts'),
+    module: path.join(__dirname, 'context.ts'),
     export: 'Context',
     alias: 'ctx',
   },
