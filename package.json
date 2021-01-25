@@ -30,7 +30,7 @@
   "dependencies": {
     "@apollo/federation": "0.20.7",
     "@apollo/gateway": "0.21.4",
-    "@prisma/client": "2.14.0",
+    "@prisma/client": "2.15.0",
     "apollo-server-express": "2.19.2",
     "graphql": "15.4.0",
     "graphql-middleware": "6.0.2",
@@ -41,7 +41,7 @@
     "nexus-plugin-prisma": "0.28.0"
   },
   "devDependencies": {
-    "@prisma/cli": "2.14.0",
+    "@prisma/cli": "2.15.0",
     "@types/jest": "26.0.20",
     "@types/node": "14.14.22",
     "apollo-server-testing": "2.19.2",
