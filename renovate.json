@@ -7,6 +7,32 @@
     {
       "depTypeList": ["dependencies"],
       "rangeStrategy": "pin"
+    },
+    {
+      "groupName": "apollo-server",
+      "depTypeList": ["dependencies", "devDependencies"],
+      "updateTypes": ["minor"],
+      "labels": ["type/deps"],
+      "semanticCommitType": "deps",
+      "packagePatterns": ["^apollo-server"],
+      "excludePackagePatterns": ["^@prisma/"]
+    },
+    {
+      "groupName": "dependencies-non-major",
+      "depTypeList": ["dependencies"],
+      "updateTypes": ["minor"],
+      "labels": ["type/deps"],
+      "semanticCommitType": "deps",
+      "excludePackagePatterns": ["^@prisma/", "^apollo-server"]
+    },
+    {
+      "groupName": "devDependencies-non-major",
+      "depTypeList": ["devDependencies"],
+      "updateTypes": ["minor"],
+      "labels": ["type/chore"],
+      "semanticCommitType": "chore",
+      "semanticCommitScope": "deps",
+      "excludePackagePatterns": ["^@prisma/", "^apollo-server"]
     }
   ]
 }
