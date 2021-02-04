@@ -2706,7 +2706,12 @@ graphql-upload@^8.0.2:
     http-errors "^1.7.3"
     object-path "^0.11.4"
 
-graphql@15.4.0, graphql@^15.3.0:
+graphql@15.5.0:
+  version "15.5.0"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-15.5.0.tgz#39d19494dbe69d1ea719915b578bf920344a69d5"
+  integrity sha512-OmaM7y0kaK31NKG31q4YbD2beNYa6jBBKtMFT6gLYJljHLJr42IqJ8KX08u3Li/0ifzTU5HjmoOOrwa5BRLeDA==
+
+graphql@^15.3.0:
   version "15.4.0"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-15.4.0.tgz#e459dea1150da5a106486ba7276518b5295a4347"
   integrity sha512-EB3zgGchcabbsU9cFe1j+yxdzKQKAbGUWRb13DsrsMN1yyfmmIq+2+L5MqVWcDCE4V89R5AyUOi7sMOGxdsYtA==
@@ -4096,10 +4101,10 @@ negotiator@0.6.2:
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.2.tgz#feacf7ccf525a77ae9634436a64883ffeca346fb"
   integrity sha512-hZXc7K2e+PgeI1eDBe/10Ard4ekbfrrqG8Ep+8Jmf4JID2bNg7NvCPOZN+kfF574pFQI7mum2AUqDidoKqcTOw==
 
-nexus-plugin-prisma@0.28.0:
-  version "0.28.0"
-  resolved "https://registry.yarnpkg.com/nexus-plugin-prisma/-/nexus-plugin-prisma-0.28.0.tgz#69cca551b17b5db9768f5e2da4698d6f7251920e"
-  integrity sha512-0LLd/FLH0p8XhCifvJ5qMUVyBLYy+M9sveeITgAQr4lQxmd7ULjNS5+ozuiIkw50JyKIleQUUKZ9a1+ZKgA24Q==
+nexus-plugin-prisma@0.30.0:
+  version "0.30.0"
+  resolved "https://registry.yarnpkg.com/nexus-plugin-prisma/-/nexus-plugin-prisma-0.30.0.tgz#6860328ee09c80f16bbc359864415b8358084111"
+  integrity sha512-/Slypcty4fLVnN8k0ifsav0zY/xHWHzBpCboAmLs3eINxy++oYNUurpEv9C1dJ/2kTOBGSE1kpWMYt1SjUyHNg==
   dependencies:
     camelcase "^6.2.0"
     endent "^2.0.1"
