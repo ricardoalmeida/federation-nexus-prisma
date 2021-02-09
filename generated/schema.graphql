@@ -39,7 +39,7 @@ input IntFilter {
 }
 
 type Mutation {
-  createOneTrack(data: TrackCreateInput!): Track
+  createOneTrack(data: TrackCreateInput!): Track!
   createPlaylist(data: PlaylistCreateInput!): PlaylistOrError!
   deletePlaylist(where: PlaylistWhereUniqueInput!): Playlist
   deleteTrack(where: TrackWhereUniqueInput!): Track
@@ -102,8 +102,8 @@ input NullableStringFieldUpdateOperationsInput {
 }
 
 type Playlist {
-  description: String
-  id: Int
+  description: String!
+  id: Int!
   tracks(after: PlaylistTrackWhereUniqueInput, before: PlaylistTrackWhereUniqueInput, first: Int, last: Int): [PlaylistTrack!]!
   userId: String
 }
@@ -120,11 +120,11 @@ type PlaylistError {
 union PlaylistOrError = Playlist | PlaylistError
 
 type PlaylistTrack {
-  addedAt: DateTime
-  id: Int
-  playlist: Playlist
-  playlistId: Int
-  trackId: Int
+  addedAt: DateTime!
+  id: Int!
+  playlist: Playlist!
+  playlistId: Int!
+  trackId: Int!
 }
 
 input PlaylistTrackCreateOrConnectWithoutplaylistInput {
@@ -144,11 +144,11 @@ input PlaylistTrackListRelationFilter {
 }
 
 input PlaylistTrackScalarWhereInput {
-  addedAt: DateTimeFilter
   AND: [PlaylistTrackScalarWhereInput!]
-  id: IntFilter
   NOT: [PlaylistTrackScalarWhereInput!]
   OR: [PlaylistTrackScalarWhereInput!]
+  addedAt: DateTimeFilter
+  id: IntFilter
   playlistId: IntFilter
   trackId: IntFilter
 }
@@ -156,6 +156,11 @@ input PlaylistTrackScalarWhereInput {
 input PlaylistTrackUpdateManyMutationInput {
   addedAt: DateTimeFieldUpdateOperationsInput
   trackId: IntFieldUpdateOperationsInput
+}
+
+input PlaylistTrackUpdateManyWithWhereWithoutPlaylistInput {
+  data: PlaylistTrackUpdateManyMutationInput!
+  where: PlaylistTrackScalarWhereInput!
 }
 
 input PlaylistTrackUpdateManyWithoutPlaylistInput {
@@ -171,19 +176,14 @@ input PlaylistTrackUpdateManyWithoutPlaylistInput {
   upsert: [PlaylistTrackUpsertWithWhereUniqueWithoutPlaylistInput!]
 }
 
-input PlaylistTrackUpdateManyWithWhereWithoutPlaylistInput {
-  data: PlaylistTrackUpdateManyMutationInput!
-  where: PlaylistTrackScalarWhereInput!
+input PlaylistTrackUpdateWithWhereUniqueWithoutPlaylistInput {
+  data: PlaylistTrackUpdateWithoutPlaylistInput!
+  where: PlaylistTrackWhereUniqueInput!
 }
 
 input PlaylistTrackUpdateWithoutPlaylistInput {
   addedAt: DateTimeFieldUpdateOperationsInput
   trackId: IntFieldUpdateOperationsInput
-}
-
-input PlaylistTrackUpdateWithWhereUniqueWithoutPlaylistInput {
-  data: PlaylistTrackUpdateWithoutPlaylistInput!
-  where: PlaylistTrackWhereUniqueInput!
 }
 
 input PlaylistTrackUpsertWithWhereUniqueWithoutPlaylistInput {
@@ -193,11 +193,11 @@ input PlaylistTrackUpsertWithWhereUniqueWithoutPlaylistInput {
 }
 
 input PlaylistTrackWhereInput {
-  addedAt: DateTimeFilter
   AND: [PlaylistTrackWhereInput!]
-  id: IntFilter
   NOT: [PlaylistTrackWhereInput!]
   OR: [PlaylistTrackWhereInput!]
+  addedAt: DateTimeFilter
+  id: IntFilter
   playlist: PlaylistWhereInput
   playlistId: IntFilter
   trackId: IntFilter
@@ -215,10 +215,10 @@ input PlaylistUpdateInput {
 
 input PlaylistWhereInput {
   AND: [PlaylistWhereInput!]
-  description: StringFilter
-  id: IntFilter
   NOT: [PlaylistWhereInput!]
   OR: [PlaylistWhereInput!]
+  description: StringFilter
+  id: IntFilter
   tracks: PlaylistTrackListRelationFilter
   userId: StringNullableFilter
 }
@@ -272,8 +272,8 @@ input StringNullableFilter {
 }
 
 type Track {
-  id: Int
-  name: String
+  id: Int!
+  name: String!
 }
 
 input TrackCreateInput {
