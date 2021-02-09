@@ -32,13 +32,13 @@
     "@apollo/gateway": "0.22.0",
     "@prisma/client": "2.16.1",
     "apollo-server-express": "2.19.2",
-    "graphql": "15.4.0",
+    "graphql": "15.5.0",
     "graphql-middleware": "6.0.3",
     "graphql-scalars": "1.7.0",
     "graphql-shield": "7.5.0",
     "graphql-transform-federation": "2.2.0",
     "nexus": "1.0.0",
-    "nexus-plugin-prisma": "0.28.0"
+    "nexus-plugin-prisma": "0.30.0"
   },
   "devDependencies": {
     "@types/jest": "26.0.20",
