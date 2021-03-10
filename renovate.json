@@ -1,38 +1,33 @@
 {
   "extends": ["config:base", ":assignee(ricardoalmeida)", ":reviewer(ricardoalmeida)"],
-  "patch": {
-    "automerge": true
-  },
+  "patch": { "automerge": true },
   "packageRules": [
-    {
-      "depTypeList": ["dependencies"],
-      "rangeStrategy": "pin"
-    },
+    { "rangeStrategy": "pin", "matchDepTypes": ["dependencies"] },
     {
       "groupName": "apollo-server",
-      "depTypeList": ["dependencies", "devDependencies"],
-      "updateTypes": ["minor"],
       "labels": ["type/deps"],
       "semanticCommitType": "deps",
-      "packagePatterns": ["^apollo-server"],
-      "excludePackagePatterns": ["^@prisma/"]
+      "excludePackagePatterns": ["prisma"],
+      "matchDepTypes": ["dependencies", "devDependencies"],
+      "matchUpdateTypes": ["minor"],
+      "matchPackagePatterns": ["^apollo-server"]
     },
     {
       "groupName": "dependencies-non-major",
-      "depTypeList": ["dependencies"],
-      "updateTypes": ["minor"],
       "labels": ["type/deps"],
       "semanticCommitType": "deps",
-      "excludePackagePatterns": ["^@prisma/", "^apollo-server"]
+      "excludePackagePatterns": ["prisma", "^apollo-server"],
+      "matchDepTypes": ["dependencies"],
+      "matchUpdateTypes": ["minor"]
     },
     {
       "groupName": "devDependencies-non-major",
-      "depTypeList": ["devDependencies"],
-      "updateTypes": ["minor"],
       "labels": ["type/chore"],
       "semanticCommitType": "chore",
       "semanticCommitScope": "deps",
-      "excludePackagePatterns": ["^@prisma/", "^apollo-server"]
+      "excludePackagePatterns": ["prisma", "^apollo-server"],
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["minor"]
     }
   ]
 }
