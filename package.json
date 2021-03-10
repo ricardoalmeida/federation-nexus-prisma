@@ -38,7 +38,7 @@
     "graphql-shield": "7.5.0",
     "graphql-transform-federation": "2.2.0",
     "nexus": "1.0.0",
-    "nexus-plugin-prisma": "0.30.0"
+    "nexus-plugin-prisma": "0.32.0"
   },
   "devDependencies": {
     "@types/jest": "26.0.20",
