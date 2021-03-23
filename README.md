@@ -28,7 +28,7 @@ docker-compose up -d
 ### 3. Run db migrations
 
 ```bash
-yarn prisma migrate up --experimental
+yarn prisma:migrate
 ```
 
 ### 4. Start Service and Gateway

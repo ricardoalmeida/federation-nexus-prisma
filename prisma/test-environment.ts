@@ -3,7 +3,7 @@ const randomString = require('randomstring');
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 const { PrismaClient } = require('@prisma/client');
-const prismaBinary = './node_modules/.bin/prisma';
+
 class PrismaTestEnvironment extends NodeEnvironment {
   constructor(config) {
     super(config);
@@ -26,7 +26,7 @@ class PrismaTestEnvironment extends NodeEnvironment {
     const url = `${this.databaseUrl}?schema=${this.schema}`;
     process.env.DATABASE_URL = url;
     this.global.process.env.DATABASE_URL = url;
-    await exec(`${prismaBinary} migrate deploy --preview-feature`);
+    await exec('yarn prisma:deploy');
     return super.setup();
   }
   async teardown() {

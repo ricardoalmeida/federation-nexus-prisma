@@ -28,5 +28,5 @@ jobs:
           node-version: "12.x"
       - run: yarn install
       - run: yarn build
-      - run: yarn prisma migrate deploy --preview-feature
+      - run: yarn prisma:deploy
       - run: yarn test

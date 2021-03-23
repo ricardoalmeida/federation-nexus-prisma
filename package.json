@@ -10,6 +10,8 @@
     "dev:gateway": "env-cmd ts-node-dev --respawn --transpile-only ./gateway.ts",
     "dev:typecheck": "tsc --noEmit --watch",
     "postgres:start": "docker-compose up -d",
+    "prisma:migrate": "yarn prisma migrate dev",
+    "prisma:deploy": "yarn prisma migrate deploy",
     "generate": "ts-node --transpile-only -P tsconfig.json ./src/schema.ts",
     "test": "jest"
   },
