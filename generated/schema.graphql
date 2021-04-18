@@ -127,7 +127,18 @@ type PlaylistTrack {
   trackId: Int!
 }
 
-input PlaylistTrackCreateOrConnectWithoutplaylistInput {
+input PlaylistTrackCreateManyPlaylistInput {
+  addedAt: DateTime!
+  id: Int
+  trackId: Int!
+}
+
+input PlaylistTrackCreateManyPlaylistInputEnvelope {
+  data: [PlaylistTrackCreateManyPlaylistInput!]
+  skipDuplicates: Boolean
+}
+
+input PlaylistTrackCreateOrConnectWithoutPlaylistInput {
   create: PlaylistTrackCreateWithoutPlaylistInput!
   where: PlaylistTrackWhereUniqueInput!
 }
@@ -165,8 +176,9 @@ input PlaylistTrackUpdateManyWithWhereWithoutPlaylistInput {
 
 input PlaylistTrackUpdateManyWithoutPlaylistInput {
   connect: [PlaylistTrackWhereUniqueInput!]
-  connectOrCreate: [PlaylistTrackCreateOrConnectWithoutplaylistInput!]
+  connectOrCreate: [PlaylistTrackCreateOrConnectWithoutPlaylistInput!]
   create: [PlaylistTrackCreateWithoutPlaylistInput!]
+  createMany: PlaylistTrackCreateManyPlaylistInputEnvelope
   delete: [PlaylistTrackWhereUniqueInput!]
   deleteMany: [PlaylistTrackScalarWhereInput!]
   disconnect: [PlaylistTrackWhereUniqueInput!]
