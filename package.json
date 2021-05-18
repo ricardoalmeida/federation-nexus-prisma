@@ -33,7 +33,7 @@
     "@apollo/federation": "0.25.0",
     "@apollo/gateway": "0.28.1",
     "@prisma/client": "2.22.1",
-    "apollo-server-express": "2.24.0",
+    "apollo-server-express": "2.24.1",
     "graphql": "15.5.0",
     "graphql-middleware": "6.0.10",
     "graphql-scalars": "1.9.3",
@@ -45,7 +45,7 @@
   "devDependencies": {
     "@types/jest": "26.0.23",
     "@types/node": "14.14.45",
-    "apollo-server-testing": "2.24.0",
+    "apollo-server-testing": "2.24.1",
     "dotenv": "9.0.2",
     "env-cmd": "10.1.0",
     "jest": "26.6.3",
