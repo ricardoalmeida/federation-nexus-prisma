@@ -1,5 +1,5 @@
 ### BASE ###
-FROM node:16.1.0-alpine AS base
+FROM node:16.13.0-alpine AS base
 
 RUN apk add --no-cache --virtual .build-deps alpine-sdk python
 
