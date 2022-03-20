@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@types/jest": "26.0.24",
-    "@types/node": "16.11.22",
+    "@types/node": "16.11.26",
     "apollo-server-testing": "2.25.3",
     "dotenv": "16.0.0",
     "env-cmd": "10.1.0",
